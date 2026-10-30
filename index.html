@@ -92,10 +92,115 @@ body.guest nav,body.guest #hm,body.guest .gh,body.guest #au{display:none}
 .ms{height:1px;background:var(--bd);margin:6px 0}
 .seg{display:flex;gap:4px;margin-left:auto}.seg b{padding:2px 10px;border-radius:12px;background:var(--p2);font-weight:500;font-size:12px}.seg b.on{background:var(--ac);color:#1a1a1a}
 @media(max-width:860px){#pc,#pi{font-size:16px!important}}
+
+/* ===== LeetCode-style header ===== */
+header{height:50px;padding:0 20px;gap:0;background:var(--p1);border-bottom:1px solid var(--bd);position:relative;z-index:30}
+:root[data-t=light] header{background:#fff}
+.logo{gap:8px;margin-right:24px;font-size:17px;font-weight:600;letter-spacing:-.2px}
+.logo .lgs{flex:none}.logo b{color:var(--ac);font-weight:700}
+nav{gap:0;height:100%;align-items:stretch}
+nav a{display:flex;align-items:center;padding:0 12px;border-radius:0;background:none!important;color:var(--mu);font-size:14px;font-weight:500;height:100%;position:relative;transition:color .15s}
+nav a:hover,nav a.on{color:var(--tx)}
+nav a.on::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;background:var(--ac);border-radius:2px 2px 0 0}
+.hr{display:flex;align-items:center;gap:2px}
+.hb{border-radius:6px;padding:6px 9px;color:var(--mu)}
+.hb svg{flex:none}
+.hb:hover{background:var(--p2);color:var(--tx);filter:none}
+#hs{font-weight:600;font-size:13px}
+.vd{width:1px;height:18px;background:var(--bd);margin:0 8px}
+#au .hb{font-weight:500;font-size:14px;padding:6px 10px}
+.av{margin-left:0;width:30px;height:30px;cursor:pointer}
+#hm{display:none}
+@media(max-width:700px){
+ header{padding:0 10px}
+ .logo{margin-right:auto;font-size:16px}
+ .hr{gap:0}
+ #hm{display:flex}
+ .vd,.hb span:not(#hs){display:none}
+ #au .hb span{display:inline}
+ nav{display:none;position:fixed;top:50px;left:0;right:0;height:auto;flex-direction:column;padding:6px 0;background:var(--p1);border-bottom:1px solid var(--bd);box-shadow:0 10px 24px #0007;z-index:25}
+ nav.open{display:flex}
+ nav a{height:auto;padding:14px 20px;font-size:15px}
+ nav a.on{background:var(--p2)!important;color:var(--tx)}
+ nav a.on::after{left:0;right:auto;top:0;bottom:0;width:3px;height:auto;border-radius:0}
+ .hb{padding:8px}
+}
+@media(max-width:380px){#hs{display:none}}
+
+/* ===== LeetCode-style profile ===== */
+.prof{max-width:1180px;gap:16px;padding:16px;align-items:start}
+.prof>div{gap:16px}
+.pf-r{min-width:0}
+.pf-card{background:var(--p1);border-radius:12px;padding:16px}
+.pf-top{display:flex;gap:14px;align-items:center}
+.pf-av.big{width:80px;height:80px;border-radius:8px;font-size:34px;flex:none}
+.pf-id{min-width:0}
+.pf-nm{font-size:18px;font-weight:700;line-height:1.25;word-break:break-word}
+.pf-un{color:var(--mu);font-size:13px}
+.pf-rk{margin-top:4px;font-size:13px}.pf-rk b{font-weight:600}
+.pf-bio{margin:12px 0 0;color:var(--tx)}
+.pf-fol{display:flex;gap:16px;margin:14px 0 12px;align-items:center;flex-wrap:wrap;font-size:13px}
+.pf-fol>span{cursor:pointer}.pf-fol b{font-weight:600}
+.pf-fol a{margin-left:auto;color:var(--ac);cursor:pointer}.pf-fol a:hover{text-decoration:underline}
+.pf-edit{width:100%;padding:8px 12px;border-radius:8px;background:#2cbb5d1f;color:var(--e);font-weight:600;border:0}
+.pf-edit:hover{background:#2cbb5d33;filter:none}
+.pf-h{font-weight:600;margin-bottom:12px}
+.pf-csg{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
+.pf-csn{display:flex;align-items:center;gap:6px;color:var(--mu);font-size:12px}
+.pf-csn svg{color:var(--mu)}
+.pf-csv{font-size:20px;font-weight:600;margin-top:2px}
+.pf-csl{color:var(--mu);font-size:12px}
+.pf-lr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px}
+.pf-sk{margin-top:12px}.pf-sk:first-of-type{margin-top:0}
+.pf-skh{display:flex;align-items:center;gap:8px;color:var(--mu);font-size:12px;margin-bottom:8px}
+.pf-skh i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.tg{background:var(--p2);border-radius:14px;padding:2px 10px;margin:0 6px 6px 0}
+.pf-row2{display:grid;grid-template-columns:3fr 2fr;gap:16px}
+.pf-solved{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.pf-ringw{position:relative;width:150px;height:150px;flex:none;margin:0 auto}
+.pf-ringsvg{width:100%;height:100%}
+.pf-ringc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.3}
+.pf-ringc b{font-size:28px;font-weight:700}.pf-ringc .mu{font-size:13px}
+.pf-sv{font-size:12px;margin-top:2px}.pf-at{font-size:12px;position:relative}
+.pf-dif{flex:1;min-width:140px;display:flex;flex-direction:column;gap:8px}
+.pf-db{background:var(--p2);border-radius:8px;padding:6px 12px;display:flex;flex-direction:column;align-items:center;line-height:1.35;font-size:12px;font-weight:500}
+.pf-db b{font-size:14px;font-weight:600}
+.pf-acc{font-size:12px;text-align:center}.pf-acc b{color:var(--tx);font-weight:600}
+.pf-bh{font-size:13px}
+.pf-bn{font-size:26px;font-weight:700;margin:2px 0 10px}
+.pf-bl .bd{font-size:12px;padding:4px 10px;background:var(--p2)}
+.pf-hh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;margin-bottom:14px;font-size:14px}
+.pf-hh .mu b{color:var(--tx);font-weight:600}.pf-hh>span:first-child b{font-size:16px}
+.pf-hms{overflow-x:auto;padding-bottom:4px}
+.pf-mos{display:flex;gap:10px;width:max-content;margin:0 auto}
+.pf-hm{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,11px);grid-auto-columns:11px;gap:3px}
+.pf-hm .hc{width:11px;height:11px;border-radius:2px}
+.hc.l0{background:var(--bd)}
+.pf-mo{min-width:28px}
+.pf-ml{margin-top:8px;font-size:12px;color:var(--mu)}
+.pf-tabs{display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.pf-tab{padding:4px 12px;border-radius:14px;cursor:pointer;color:var(--mu);font-size:13px;font-weight:500}
+.pf-tab:hover{color:var(--tx)}.pf-tab.on{background:var(--p2);color:var(--tx)}
+.pf-va{color:var(--mu);cursor:pointer;font-size:13px}.pf-va:hover{color:var(--tx)}
+.pf-rl .sr{border:0;border-radius:8px;padding:12px 14px}
+.pf-rl .sr:nth-child(odd){background:var(--p2)}
+.pf-rl .sr:hover{background:var(--p2);filter:brightness(1.08)}
+.pf-em{text-align:center;color:var(--mu);padding:28px 0}
+@media(max-width:800px){.prof{padding:12px}.pf-row2{grid-template-columns:1fr!important}.pf-mos{margin:0}}
 </style></head><body>
-<header><button class="hb" id="hm" aria-label="Menu" onclick="event.stopPropagation();document.querySelector('nav').classList.toggle('open')">☰</button><div class="logo" onclick="go('problems')"><span class="lg">&lt;/&gt;</span><span>Problem<b>X</b></span></div>
-<nav><a data-n="explore" onclick="go('explore')">Explore</a><a data-n="problems" onclick="go('problems')">Problems</a><a data-n="interview" onclick="go('interview')">Interview</a><a data-n="random" onclick="go('random')">Random</a></nav>
-<span class="sp"></span><button class="hb gh" title="Day streak" onclick="profile()">🔥<span id="hs">0</span></button><button class="hb gh" onclick="cfg()" title="Compiler settings">⚙<span>Compiler</span></button><button class="hb" onclick="theme()" title="Toggle theme">◐</button><span id="au"></span><div id="mn"></div></header>
+<header>
+<div class="logo" onclick="go('problems')"><svg class="lgs" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4.5 8 12l6.5 7.5" stroke="#ffa116" stroke-width="2.4"/><path d="M9 12h11" stroke="#b3b3b3" stroke-width="2.4"/></svg><span class="lt">Problem<b>X</b></span></div>
+<nav><a data-n="explore" onclick="go('explore')">Explore</a><a data-n="problems" onclick="go('problems')">Problems</a><a data-n="contest" onclick="contest()">Contest</a><a data-n="interview" onclick="go('interview')">Interview</a><a data-n="random" onclick="go('random')">Random</a><a data-n="plans" onclick="plans()">Plans</a></nav>
+<span class="sp"></span>
+<div class="hr">
+<button class="hb gh" title="Day streak" onclick="profile()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#ffa116"><path d="M12 2c1 4-2 5-2 8 0 1 .6 2 1.5 2.4C11 10 14 9 14 6c3 2 5 5 5 9a7 7 0 0 1-14 0c0-2 1-4 2-5 0 2 1 3 2 3-1-3 0-6 3-11z"/></svg><span id="hs">0</span></button>
+<button class="hb gh" onclick="cfg()" title="Compiler settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Compiler</span></button>
+<button class="hb" onclick="theme()" title="Toggle theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
+<span class="vd gh"></span>
+<span id="au"></span>
+<button class="hb" id="hm" aria-label="Menu" onclick="event.stopPropagation();document.querySelector('nav').classList.toggle('open')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+<div id="mn"></div></header>
 <div id="app"></div>
 <script>
 const CATS="HTML/CSS|Semantic HTML Structure~0;CSS Selectors Practice~0;Form with Validation Styling~1;Flexbox Card Layout~1;CSS Grid Gallery~2;Sticky Header Navigation~1;Two-Column Layout~1;Media Query Responsive Text~1;Table Styling~0;CSS Variable Theme Switcher~2\nJavaScript|Counter Widget~0;To-Do List~1;Simple Calculator~1;Modal Dialog~1;Tabbed Content~1;Search and Filter List~1;LocalStorage Counter~1;Dark/Light Theme Toggle~2;Event Delegation List~2;Form Validation~2\nReact|Counter with useState~0;Effect Counter~1;Props Greeting~0;Conditional Rendering Banner~0;Todo List with State~1;Controlled Form~1;Fetch Data from API~2;Custom Hook useCounter~2;Theme Toggle with Context~2;Search Filter with Debounce~2\nJava Basic|Hello World~0;Variable Assignment~0;String Input with Scanner~0;If Else Grade Check~0;Switch Day of Week~0;For Loop Sum~0;While Loop Countdown~0;Do While Menu~0;Method Addition~0;Even Odd Check~0;Nested Loop Star Triangle~1;Multiplication Table~1;Factorial of a Number~1;Sum of Digits~1;Reverse a Number~1;Prime Number Check~2;Pyramid Pattern~2;Fibonacci Sequence~2;Armstrong Number~2;Greatest of Three Numbers~2\nJava Intermediate|Array Max Element~0;String Reverse~0;Array Copy~0;Palindrome Check~1;Count Vowels~1;Method Overloading Example~1;Class and Object~1;Constructor Overloading~1;Static Variable~1;This Keyword~1;Inheritance Example~1;Super Keyword Usage~1;Encapsulation with Getters Setters~1;Abstract Class~2;Interface Implementation~2;Exception Handling~2;ArrayList Basics~2;Method Overriding~2;This vs Super~2;IS-A vs HAS-A~2\nJava Hard|Diamond Pattern~2;Hollow Square Pattern~2;Number Pattern Pyramid~2;Kadane Algorithm Maximum Subarray~2;Two Sum Pair~2;Polymorphism with Method Overriding~2;Interface vs Abstract Class~2;Constructor Chaining~2;Real World OOP Design~2;String Buffer vs Builder~2;Hollow Diamond Pattern~2;Multiple Inheritance via Interfaces~2;Method Overriding Rules~2;Encapsulation with Validation~2;Interface Default Methods~2;Polymorphism with Interfaces~2;Static vs Instance Members~2;Super Constructor Call~2;Object Composition Example~2;Abstract vs Interface Comparison~2\nArrays|Maximum Element~0;Minimum Element~0;Reverse Array~0;Linear Search~0;Duplicate Element~1;Sort Array Ascending~1;Frequency Count~1;Two Sum~1;Prefix Sum~1;Sliding Window Sum~1;Two Pointers Pair Sum~1;Subarray Maximum Sum~2;Rotate Array~2;Merge Two Sorted Arrays~2;Missing Number~2;Majority Element~2;Best Time to Buy and Sell Stock~2;Container With Most Water~2;Product of Array Except Self~2;Search in Rotated Sorted Array~2\nStrings|Reverse String~0;Palindrome Check~0;Character Frequency~0;Anagram Check~1;Duplicate Characters~1;String Compression~1;Longest Substring Without Repeating Characters~2;String Rotation Check~1;Count Words~0;Substring Search~1;Longest Palindrome Substring~2;String to Integer~1;Remove Vowels~0;First Non-Repeating Character~2;String Multiplication~2;Group Anagrams~2;String Matching Rabin-Karp~2;Text Justification~2;Valid Parentheses~2;Longest Common Prefix~0\nLinked List|Create and Traverse Linked List~0;Insert at End~0;Delete a Node~0;Search in Linked List~0;Find Middle Node~1;Reverse Linked List~1;Detect Cycle~2;Remove Duplicates~1;Merge Two Sorted Lists~2;Find Nth Node from End~2;Intersection of Two Lists~2;Add Two Numbers as Lists~2;Copy List with Random Pointers~2;Doubly Linked List Insert~0;Doubly Linked List Delete~0;Circular Linked List Insert~1;Detect Loop in Linked List~2;Swap Nodes in Pairs~2;Rotate Linked List~2;Flatten Multilevel List~2\nStack & Queue|Stack Push and Pop~0;Balanced Parentheses~1;Reverse a Stack~1;Min Stack~2;Next Greater Element~2;Evaluate Postfix Expression~2;Queue Using Stacks~2;Implement Circular Queue~1;Priority Queue with Heap~2;Sliding Window Maximum~2;Stack Using Queues~2;Sort a Stack~2;Queue Implementation with Array~0;Deque Implementation~0;First Non-Repeating Character in Stream~2;Next Smaller Element~2;Largest Rectangle in Histogram~2;Queue Reconstruction by Height~2;Implement Two Stacks in One Array~2;Generate Binary Numbers Using Queue~0\nAdvanced DSA|Basic Binary Search~0;First Occurrence in Sorted Array~1;Search in Rotated Sorted Array~2;Tree Traversal (Inorder)~0;Tree Height~1;BST Search~0;BFS Graph Traversal~1;DFS Graph Traversal~1;Connected Components~2;Fibonacci with DP~0;Climbing Stairs DP~1;0/1 Knapsack~2;Longest Common Subsequence~2;Min Heap Operations~0;Kth Largest Element~1;HashMap Frequency Count~0;HashSet Duplicate Detection~0;Activity Selection Greedy~1;Merge Intervals~2;House Robber DP~2\nInterview|Reverse an Array In Place~0;Check Anagram~0;Find Middle of Linked List~0;Factorial Using Recursion~0;Linear Search~0;Bubble Sort Array~1;String Builder Concatenation~1;Reverse a String~0;Stack Push Pop Sequence~1;Two Sum Pair Check~0";
@@ -150,15 +255,15 @@ function go(n){if(CUR=="guest")return auth("in");if(n=="random"){const u=Q.filte
 if(n=="explore")return explore();F={q:"",c:n=="interview"?"Interview":"",d:""};home()}
 /* ---------- HOME ---------- */
 function stat(){const n=[0,0,0],t=[0,0,0];Q.forEach(x=>{t[x.d]++;if(solved[x.id])n[x.d]++});return{n,t,s:n[0]+n[1]+n[2]}}
-function home(){if(CUR=="guest")return auth("in");const L=Q.filter(x=>(!F.c||x.c==F.c)&&(F.d===""||x.d==F.d)&&x.t.toLowerCase().includes(F.q.toLowerCase()));const S=stat();setNav(F.c=="Interview"?"interview":"problems");
+function home(){if(CUR=="guest")return auth("in");const at=new Set(SUBS().map(x=>x.id)),L=Q.filter(x=>(!F.c||x.c==F.c)&&(F.d===""||x.d==F.d)&&(!F.s||(F.s=="solved"?solved[x.id]:F.s=="todo"?!solved[x.id]&&!at.has(x.id):!solved[x.id]&&at.has(x.id)))&&x.t.toLowerCase().includes(F.q.toLowerCase()));if(F.o=="d")L.sort((a,b)=>a.d-b.d||a.id-b.id);if(F.o=="r")L.sort((a,b)=>b.d-a.d||a.id-b.id);const S=stat(),dq=DAILY();setNav(F.c=="Interview"?"interview":"problems");
 const cats=[...new Set(Q.map(x=>x.c))];
-app.innerHTML=`<div class="home"><div class="panel"><div class="bar"><input id="s" placeholder="Search questions" value="${esc(F.q)}"><select id="d"><option value="">Difficulty</option>${DN.map((n,i)=>`<option value="${i}" ${F.d===String(i)?"selected":""}>${n}</option>`).join("")}</select><button id="rnd">Pick random</button></div>
+app.innerHTML=`<div class="home"><div class="panel"><div class="panel" style="background:var(--p2);display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;cursor:pointer" onclick="open_(${dq.id})">📅 <b>Daily Challenge</b><span>${esc(dq.t)}</span><span class="d${dq.d}">${DN[dq.d]}</span><span class="ok">${solved[dq.id]?"✔ Done":""}</span><span class="sp"></span><span class="mu">🔥 ${streak().cur} day streak</span></div><div class="bar"><input id="s" placeholder="Search questions" value="${esc(F.q)}"><select id="d"><option value="">Difficulty</option>${DN.map((n,i)=>`<option value="${i}" ${F.d===String(i)?"selected":""}>${n}</option>`).join("")}</select><select id="st"><option value="">Status</option><option value="todo" ${F.s=="todo"?"selected":""}>Todo</option><option value="att" ${F.s=="att"?"selected":""}>Attempted</option><option value="solved" ${F.s=="solved"?"selected":""}>Solved</option></select><select id="so"><option value="">Sort: Default</option><option value="d" ${F.o=="d"?"selected":""}>Easy → Hard</option><option value="r" ${F.o=="r"?"selected":""}>Hard → Easy</option></select><button id="rnd">Pick random</button></div>
 <div class="chips">${["All",...cats].map(c=>`<span class="chip ${(F.c||"All")==c?"on":""}" data-c="${c}">${c}</span>`).join("")}</div>
 <div class="mu" style="margin-bottom:6px">${L.length} problems</div>
 ${L.map(x=>`<div class="row" onclick="open_(${x.id})"><span class="ok">${solved[x.id]?"✔":""}</span><span>${x.id}. ${esc(x.t)}</span><span class="mu">${x.c}</span><span class="d${x.d}">${DN[x.d]}</span></div>`).join("")||'<div class="mu" style="padding:20px">No problems match. Clear the search or pick another topic.</div>'}</div>
 <div class="panel" style="align-self:start"><div class="ring" style="--p:${S.s/Q.length*100}"><div><b style="font-size:22px">${S.s}</b><span class="mu">/ ${Q.length} solved</span></div></div>
 ${DN.map((n,i)=>`<div class="pr"><span class="d${i}">${n}</span><span>${S.n[i]} / ${S.t[i]}</span></div>`).join("")}</div></div>`;
-$("#s").oninput=e=>{F.q=e.target.value;const p=e.target.selectionStart;home();const n=$("#s");n.focus();n.setSelectionRange(p,p)};$("#d").onchange=e=>{F.d=e.target.value;home()};
+$("#s").oninput=e=>{F.q=e.target.value;const p=e.target.selectionStart;home();const n=$("#s");n.focus();n.setSelectionRange(p,p)};$("#d").onchange=e=>{F.d=e.target.value;home()};$("#st").onchange=e=>{F.s=e.target.value;home()};$("#so").onchange=e=>{F.o=e.target.value;home()};
 document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{F.c=c.dataset.c=="All"?"":c.dataset.c;home()});
 $("#rnd").onclick=()=>{const u=L.filter(x=>!solved[x.id]);const p=(u.length?u:L);if(p.length)open_(p[Math.floor(Math.random()*p.length)].id)}}
 
@@ -173,17 +278,23 @@ app.querySelectorAll(".xc").forEach(e=>e.onclick=()=>{F={q:"",c:e.dataset.c,d:""
 function open_(id){if(CUR=="guest")return auth("in");setNav("problems");const q=Q[id-1],web=WEB.includes(q.c),lg=ls("px_lang")||"Java",T=TESTS[q.t]&&!web?TESTS[q.t]:null;
 const desc=web?`<p>Build a working solution for <b>${esc(q.t)}</b> using ${q.c}. Edit the code and press <b>Run</b> to refresh the live preview.</p><p class="mu">Submit marks the problem solved once the preview renders without errors.</p>`
 :`<p>Write a program that solves <b>${esc(q.t)}</b>. Read input from standard input and print the answer to standard output.</p>${T?`<h4>Examples</h4>${T.slice(0,2).map((t,i)=>`<b>Example ${i+1}</b><pre>Input:  ${esc(t[0]||"(none)")}\nOutput: ${esc(t[1])}</pre>`).join("")}<p class="mu">Submit runs all ${T.length} test cases.</p>`:`<p class="mu">This problem has no built-in test cases yet. Submit marks it solved when your code compiles and runs without errors. Add cases to <code>TESTS</code> in the source to auto-check it.</p>`}`;
+const HT={Arrays:"Think about sorting, two pointers, or a prefix-sum array before brute force.",Strings:"Consider a frequency array/HashMap, or two pointers from both ends.","Linked List":"Use slow/fast pointers and a dummy head node to simplify edge cases.","Stack & Queue":"Stacks fit 'most recent first' problems; queues fit level/order problems.","Advanced DSA":"Identify the pattern: binary search, BFS/DFS, DP state, or greedy choice.","HTML/CSS":"Start with semantic structure, then add layout with flexbox or grid.",JavaScript:"Select elements once, attach listeners, keep state in a variable.",React:"Keep state minimal and derive everything else during render."},
+sb=SUBS().filter(x=>x.id==id).reverse().slice(0,10),
+extra=`<div class="ms"></div><b>💡 Hints</b>${[HT[q.c]||"Break the problem into small steps.","Start with brute force, then ask what repeated work you can avoid.","Test edge cases: empty input, one element, duplicates, large values."].map((h,i)=>`<details><summary>Hint ${i+1}</summary><p>${esc(h)}</p></details>`).join("")}<div class="ms"></div><b>📝 My notes</b><textarea id="pn" rows="3" placeholder="Approach, complexity, mistakes…" style="width:100%;margin-top:6px"></textarea><div class="ms"></div><b>🕘 Past submissions</b>${sb.map(x=>`<div class="sr" style="cursor:default"><span class="${x.ok?"ok":"d2"}" style="flex:1">${x.ok?"Accepted":"Failed"}</span><span class="pill">${esc(x.l)}</span><span class="mu">${ago(x.ts)}</span></div>`).join("")||'<div class="mu">None yet.</div>'}<div class="ms"></div><div id="cm"></div>`;
 app.innerHTML=`<div class="ws" data-m="desc"><div class="mtabs"><span class="mt on" data-m="desc">Description</span><span class="mt" data-m="code">Code</span><span class="mt" data-m="res">${web?"Preview":"Testcase"}</span></div><div class="col dcol"><div class="tabs"><span class="tab on">Description</span><span class="sp"></span><button class="ic" id="fv" title="Add to favorites">☆</button><button class="ic" id="pv" title="Previous">‹</button><button class="ic" id="nx" title="Next">›</button><button class="ic" onclick="home()">☰ List</button></div>
-<div class="scr"><h2 style="margin:0 0 8px">${q.id}. ${esc(q.t)}</h2><span class="pill d${q.d}">${DN[q.d]}</span> <span class="pill">${q.c}</span> ${solved[id]?'<span class="pill ok">✔ Solved</span>':""}<div style="margin-top:12px">${desc}</div></div></div>
-<div class="rz" id="rv"></div><div class="right"><div class="col ecol" style="min-height:0"><div class="tabs">${web?`<span class="pill">${q.c}</span>`:`<select id="l">${Object.keys(LANG).map(l=>`<option ${l==lg?"selected":""}>${l}</option>`).join("")}</select>`}<span class="sp"></span><button class="ic" id="rs" title="Reset code">↺</button><button class="run dk" id="run">▶ Run</button><button class="sub dk" id="sub">Submit</button></div>
+<div class="scr"><h2 style="margin:0 0 8px">${q.id}. ${esc(q.t)}</h2><span class="pill d${q.d}">${DN[q.d]}</span> <span class="pill">${q.c}</span> ${solved[id]?'<span class="pill ok">✔ Solved</span>':""}<div style="margin-top:12px">${desc}</div>${extra}</div></div>
+<div class="rz" id="rv"></div><div class="right"><div class="col ecol" style="min-height:0"><div class="tabs">${web?`<span class="pill">${q.c}</span>`:`<select id="l">${Object.keys(LANG).map(l=>`<option ${l==lg?"selected":""}>${l}</option>`).join("")}</select>`}<button class="ic" id="fm" title="Smaller font">A−</button><button class="ic" id="fp" title="Larger font">A+</button><span class="pill" id="tm" title="Click to reset timer" style="cursor:pointer">⏱ 00:00</span><span class="sp"></span><button class="ic" id="rs" title="Reset code">↺</button><button class="run dk" id="run" title="Run (Ctrl+Enter)">▶ Run</button><button class="sub dk" id="sub" title="Submit (Ctrl+Shift+Enter)">Submit</button></div>
 <div class="ed"><div id="gut">1</div><textarea id="code" spellcheck="false" autocapitalize="off"></textarea></div><div class="qk"></div></div><div class="rz" id="rh"></div>
 <div class="col ccol"><div class="tabs"><span class="tab on" id="t1">${web?"Preview":"Testcase"}</span><span class="tab" id="t2">Result</span></div><div class="scr" id="cons"></div></div></div><div class="mbar"><button class="run" onclick="document.getElementById('run').click()">▶ Run</button><button class="sub" onclick="document.getElementById('sub').click()">Submit</button></div></div>`;
 const ta=$("#code"),key="px_code_"+id+"_";let cur=1;
+comm(id,ta,()=>lang());const pn=$("#pn");pn.value=ls(K("px_pn_"+id))||"";pn.oninput=()=>ls(K("px_pn_"+id),pn.value);
+clearInterval(window.TI);let sec=0;const tm=$("#tm"),tf=()=>tm.textContent="⏱ "+String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0");window.TI=setInterval(()=>{if(!document.body.contains(tm))return clearInterval(window.TI);sec++;tf()},1000);tm.onclick=()=>{sec=0;tf()};
+const ed=$(".ed");let fs=ls("px_fs")||13;const sf=d=>{fs=Math.max(10,Math.min(24,fs+d));ed.style.fontSize=fs+"px";ls("px_fs",fs)};if(ls("px_fs"))ed.style.fontSize=fs+"px";$("#fm").onclick=()=>sf(-1);$("#fp").onclick=()=>sf(1);
 const lang=()=>web?q.c:$("#l").value;
 const gut=()=>{$("#gut").textContent=ta.value.split("\n").map((_,i)=>i+1).join("\n");$("#gut").scrollTop=ta.scrollTop};
 const load=()=>{ta.value=ls(key+lang())??(web?WT[q.c]:LANG[lang()]);gut()};load();
 ta.oninput=()=>{ls(key+lang(),ta.value);gut()};ta.onscroll=gut;
-ta.onkeydown=e=>{if(e.key=="Tab"){e.preventDefault();ta.setRangeText("    ",ta.selectionStart,ta.selectionEnd,"end");ta.oninput()}};
+ta.onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key=="Enter"){e.preventDefault();$(e.shiftKey?"#sub":"#run").click();return}if(e.key=="Tab"){e.preventDefault();ta.setRangeText("    ",ta.selectionStart,ta.selectionEnd,"end");ta.oninput()}};
 const ws=$(".ws"),rt=$(".right"),mv=m=>{ws.dataset.m=m;ws.querySelectorAll(".mt").forEach(x=>x.classList.toggle("on",x.dataset.m==m))};
 ws.querySelectorAll(".mt").forEach(x=>x.onclick=()=>mv(x.dataset.m));
 "⇥ { } ( ) [ ] ; \" = < > /".split(" ").forEach(k=>{const b=document.createElement("button");b.textContent=k;b.onpointerdown=e=>e.preventDefault();b.onclick=()=>{ta.setRangeText(k=="⇥"?"    ":k,ta.selectionStart,ta.selectionEnd,"end");ta.oninput();ta.focus()};$(".qk").appendChild(b)});
@@ -242,21 +353,22 @@ finally{const b=$("#ab");if(b)b.disabled=false}};
 $("#ab").onclick=go_;app.querySelectorAll("input").forEach(i=>i.onkeydown=e=>{if(e.key=="Enter")go_()});$("#a1").focus()}
 /* ---------- PROFILE ---------- */
 const P=()=>({name:(USERS()[CUR]||{}).user||"Guest",user:(USERS()[CUR]||{}).user||"guest",bio:"",loc:"",edu:"",gh:"",li:"",web:"",color:"#ffa116",joined:Date.now(),...(ls(K("px_prof"))||{})});
+const avs=p=>/^data:image\/jpeg;base64,[\w+\/=]+$/.test(p.photo||"")?`background:url(${p.photo}) center/cover`:`background:${p.color}`,avl=p=>/^data:image\/jpeg;base64,/.test(p.photo||"")?"":esc((p.name.trim()[0]||"?").toUpperCase());
 const SUBS=()=>ls(K("px_subs"))||[];
 function logSub(q,l,ok){if(CUR=="guest")return;const a=SUBS();a.push({id:q.id,t:q.t,l,ok,ts:Date.now()});ls(K("px_subs"),a.slice(-1000))}
 const dk=d=>new Date(d).toLocaleDateString("en-CA");
 function streak(){const days=new Set(SUBS().map(s=>dk(s.ts)));let cur=0,d=new Date();if(!days.has(dk(d)))d.setDate(d.getDate()-1);while(days.has(dk(d))){cur++;d.setDate(d.getDate()-1)}
 let max=0,run=0,prev=null;[...days].sort().forEach(k=>{const t=new Date(k+"T00:00:00");run=prev&&Math.round((t-prev)/864e5)==1?run+1:1;prev=t;max=Math.max(max,run)});return{cur,max,act:days.size}}
 function renderAv(){document.body.classList.toggle("guest",CUR=="guest");const au=$("#au");if(CUR=="guest"){au.innerHTML='<button class="hb" onclick="auth(\'in\')">Sign in</button><button class="hb su" style="color:var(--ac)" onclick="auth(\'up\')">Sign up</button>';setNav(document.querySelector("nav a.on")?.dataset.n||"");return}
-const p=P();au.innerHTML=`<div class="av" id="av" onclick="menu(event)" title="${esc(p.user)}" style="background:${p.color}">${esc((p.name.trim()[0]||"?").toUpperCase())}</div>`;setNav(document.querySelector("nav a.on")?.dataset.n||"")}
+const p=P();au.innerHTML=`<div class="av" id="av" onclick="menu(event)" title="${esc(p.user)}" style="${avs(p)}">${avl(p)}</div>`;setNav(document.querySelector("nav a.on")?.dataset.n||"")}
 function menu(e){e.stopPropagation();const m=$("#mn");if(m.style.display=="block"){m.style.display="none";return}const p=P(),lt=document.documentElement.dataset.t=="light";
 const tg=(t,l)=>`<b class="${(t=="light")==lt?"on":""}" onclick="event.stopPropagation();setTheme('${t}');this.parentNode.querySelectorAll('b').forEach(x=>x.classList.toggle('on',x==this))">${l}</b>`;
-m.innerHTML=`<div class="mi" onclick="profile()"><div class="av" style="background:${p.color};margin:0">${esc((p.name.trim()[0]||"?").toUpperCase())}</div><div><b>${esc(p.name)}</b><div class="mu">@${esc(p.user)}</div></div></div>
+m.innerHTML=`<div class="mi" onclick="profile()"><div class="av" style="${avs(p)};margin:0">${avl(p)}</div><div><b>${esc(p.name)}</b><div class="mu">@${esc(p.user)}</div></div></div>
 <div class="pm" onclick="info('Premium','ProblemX is free to use. Every problem, runner and feature is already unlocked.')">Access all features with our Premium subscription!</div>
 <div class="qg"><div class="qt" onclick="lists()"><i>📋</i>My Lists</div><div class="qt" onclick="lists('fav')"><i>⭐</i>Favorites</div><div class="qt" onclick="notebook()"><i>📓</i>Notebook</div><div class="qt" onclick="profile()"><i>📈</i>Progress</div><div class="qt" onclick="points()"><i>🪙</i>Points</div></div>
 <div class="ms"></div>
 <div class="mi" onclick="info('Try New Features','You are on the latest ProblemX build. New features will show up here.')">✨ Try New Features</div>
-<div class="mi" onclick="info('Orders','No orders yet.')">🧾 Orders</div>
+<div class="mi" onclick="board()">🏅 Leaderboard</div><div class="mi" onclick="info('Orders','No orders yet.')">🧾 Orders</div>
 <div class="mi" onclick="playground()">🧪 My Playgrounds</div>
 <div class="mi" onclick="settings()">⚙️ Settings</div>
 <div class="mi" onclick="event.stopPropagation()">🎨 Appearance<span class="seg">${tg("light","Light")}${tg("dark","Dark")}</span></div>
@@ -267,10 +379,13 @@ const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);return m<1?"just now":m<60?
 const url=v=>/^https?:\/\//i.test(v)?v:"https://"+v;
 function editProf(){if(CUR=="guest")return auth("in");const p=P(),o=document.createElement("div");o.className="mo";
 const f=(k,l,ph)=>`<label>${l}</label><input data-k="${k}" value="${esc(p[k]).replace(/"/g,"&quot;")}" placeholder="${ph||""}">`;
-o.innerHTML=`<div class="md"><h3 style="margin:0">Edit profile</h3>${f("name","Display name")}<label>Bio</label><textarea data-k="bio" rows="3" maxlength="200">${esc(p.bio)}</textarea>${f("loc","Location")}${f("edu","School / Company")}${f("gh","GitHub","github.com/username")}${f("li","LinkedIn","linkedin.com/in/username")}${f("web","Website")}<label>Avatar colour</label><input data-k="color" type="color" value="${p.color}" style="height:36px;padding:2px">
+o.innerHTML=`<div class="md"><h3 style="margin:0">Edit profile</h3>${f("name","Display name")}<label>Bio</label><textarea data-k="bio" rows="3" maxlength="200">${esc(p.bio)}</textarea>${f("loc","Location")}${f("edu","School / Company")}${f("gh","GitHub","github.com/username")}${f("li","LinkedIn","linkedin.com/in/username")}${f("web","Website")}<label>Profile photo</label><div style="display:flex;gap:10px;align-items:center"><div class="big" id="pp" style="width:56px;height:56px;font-size:24px;flex:none;${avs(p)}">${avl(p)}</div><input type="file" id="pf" accept="image/*"><button type="button" id="prm">Remove</button></div><label>Avatar colour</label><input data-k="color" type="color" value="${p.color}" style="height:36px;padding:2px">
 <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px"><button id="pc">Cancel</button><button class="sub" id="ps">Save</button></div></div>`;
 document.body.appendChild(o);o.onclick=e=>{if(e.target==o)o.remove()};o.querySelector("#pc").onclick=()=>o.remove();
-o.querySelector("#ps").onclick=()=>{const n={...p};o.querySelectorAll("[data-k]").forEach(i=>n[i.dataset.k]=i.value.trim());n.name=n.name||p.user;ls(K("px_prof"),n);o.remove();renderAv();profile()}}
+let photo=p.photo||"";const pp=o.querySelector("#pp"),upd=()=>{const t={...p,photo};pp.style.cssText="width:56px;height:56px;font-size:24px;flex:none;"+avs(t);pp.textContent=avl(t)};
+o.querySelector("#pf").onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const c=document.createElement("canvas"),z=Math.min(im.width,im.height);c.width=c.height=160;c.getContext("2d").drawImage(im,(im.width-z)/2,(im.height-z)/2,z,z,0,0,160,160);photo=c.toDataURL("image/jpeg",.85);URL.revokeObjectURL(u);upd()};im.onerror=()=>alert("Could not read that image.");im.src=u};
+o.querySelector("#prm").onclick=()=>{photo="";upd()};
+o.querySelector("#ps").onclick=()=>{const n={...p,photo};o.querySelectorAll("[data-k]").forEach(i=>n[i.dataset.k]=i.value.trim());n.name=n.name||p.user;ls(K("px_prof"),n);o.remove();renderAv();profile()}}
 let PT="ac";const ptab=t=>{PT=t;profile(1)};
 function profile(keep){if(CUR=="guest")return auth("in");setNav("");const p=P(),S=stat(),st=streak(),subs=SUBS();
 const okS=subs.filter(x=>x.ok),acc=subs.length?Math.round(okS.length/subs.length*100):0,att=new Set(subs.filter(x=>!solved[x.id]).map(x=>x.id)).size;
@@ -285,26 +400,46 @@ const yr=subs.filter(x=>Date.now()-x.ts<365*864e5).length;
 const B=[["First solve",S.s>=1],["5 solved",S.s>=5],["25 solved",S.s>=25],["100 solved",S.s>=100],["7-day streak",st.max>=7],["Hard hitter",S.n[2]>=5],["Polyglot",Object.keys(lg).length>=3]],bn=B.filter(x=>x[1]).length;
 const links=[p.web,p.gh,p.li].filter(Boolean).map(x=>`<div class="pl"><a href="${esc(url(x))}" target="_blank" rel="noopener noreferrer">${esc(x)}</a></div>`).join("");
 const list=(PT=="ac"?okS:subs).slice(-(PT=="ac"?15:100)).reverse();
-const zero=n=>`<div style="flex:1"><div class="mu">${n}</div><b style="font-size:18px">0</b><div class="mu" style="font-size:12px">Last week 0</div></div>`;
-app.innerHTML=`<div class="prof"><div><div class="panel"><div style="display:flex;gap:14px;align-items:center"><div class="big" style="background:${p.color}">${esc((p.name.trim()[0]||"?").toUpperCase())}</div><div><b style="font-size:18px">${esc(p.name)}</b><div class="mu">@${esc(p.user)}</div><div class="mu" title="Local estimate based on problems solved">Rank <b style="color:var(--tx)">${rank.toLocaleString("en-US")}</b></div></div></div>
-${p.bio?`<p>${esc(p.bio)}</p>`:""}<div style="display:flex;gap:20px;margin:10px 0"><span><b>0</b> <span class="mu">Following</span></span><span><b>0</b> <span class="mu">Followers</span></span></div>
-<button class="sub" style="width:100%;margin-bottom:8px" onclick="editProf()">Edit Profile</button>${p.loc?`<div class="pl">📍 ${esc(p.loc)}</div>`:""}${p.edu?`<div class="pl">🎓 ${esc(p.edu)}</div>`:""}${links}</div>
-<div class="panel"><b>Community Stats</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">${zero("Views")}${zero("Solution")}${zero("Discuss")}${zero("Reputation")}</div></div>
-<div class="panel"><b>Languages</b><div style="margin-top:10px">${Object.entries(lg).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="tg">${esc(l)}</span><span class="mu"><b style="color:var(--tx)">${n}</b> problems solved</span></div>`).join("")||'<div class="mu">Solve a problem to see languages.</div>'}</div></div>
-<div class="panel"><b>Skills</b>${sk.map(([n,e])=>`<div style="margin-top:12px"><div class="mu" style="margin-bottom:6px">${n}</div>${e.slice(0,3).map(tg).join("")}${e.length>3?`<details><summary>Show more</summary>${e.slice(3).map(tg).join("")}</details>`:""}</div>`).join("")||'<div class="mu" style="margin-top:8px">Your skills appear here as you solve problems.</div>'}</div></div>
-<div><div style="display:grid;grid-template-columns:3fr 2fr;gap:16px" class="two"><div class="panel" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div style="text-align:center"><div class="ring" style="--p:${S.s/Q.length*100};margin:0 auto"><div><b style="font-size:22px">${S.s}<span class="mu" style="font-size:12px">/${Q.length}</span></b><span style="color:var(--e)">✔ Solved</span></div></div><div class="mu" style="margin-top:6px">${att} Attempting</div></div>
-<div style="flex:1;min-width:150px;display:flex;flex-direction:column;gap:8px">${DN.map((n,i)=>`<div style="display:flex"><div class="sb"><span class="d${i}">${n.replace("Medium","Med.")}</span> <b>${S.n[i]}</b><span class="mu">/${S.t[i]}</span></div></div>`).join("")}<div class="mu">Acceptance <b style="color:var(--tx)">${acc}%</b> · ${subs.length} submission${subs.length==1?"":"s"}</div></div></div>
-<div class="panel"><div style="display:flex;justify-content:space-between"><b>Badges</b><b>${bn}</b></div><div style="margin-top:10px">${B.map(b=>`<span class="bd ${b[1]?"":"off"}" title="${b[1]?"Earned":"Locked"}">🏅 ${b[0]}</span>`).join("")}</div></div></div>
-<div class="panel"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:10px"><span><b>${yr}</b> submissions in the past one year</span><span class="mu">Total active days: <b style="color:var(--tx)">${st.act}</b> · Max streak: <b style="color:var(--tx)">${st.max}</b></span></div><div style="overflow:auto"><div class="ml">${ml}</div><div class="hm">${cells}</div></div></div>
-<div class="panel"><div class="tabs" style="border:0;padding:0 0 8px">${[["ac","Recent AC"],["all","List"],["sol","Solutions"],["dis","Discuss"]].map(t=>`<span class="tab ${PT==t[0]?"on":""}" onclick="ptab('${t[0]}')">${t[1]}</span>`).join("")}<span class="sp"></span><a class="mu" style="cursor:pointer" onclick="ptab('all')">View all submissions</a></div>
-${PT=="sol"||PT=="dis"?`<div class="mu" style="padding:14px 0">Nothing here yet.</div>`:list.map(x=>`<div class="sr" onclick="open_(${x.id})"><span style="flex:1">${esc(x.t)}</span>${PT=="all"?`<span class="${x.ok?"ok":"d2"}">${x.ok?"Accepted":"Failed"}</span><span class="pill">${esc(x.l)}</span>`:""}<span class="mu">${ago(x.ts)}</span></div>`).join("")||'<div class="mu" style="padding:14px 0">No submissions yet. Open a problem and press Submit.</div>'}</div>
-<div class="mu" style="text-align:center;font-size:12px">Copyright © 2026 ProblemX · India</div></div></div>`;if(!keep)scrollTo(0,0)}
+const MS=SOL().filter(x=>x.u==CUR),MD=DIS().filter(x=>x.u==CUR),AL=[...MS,...MD],cw=Date.now()-6048e5,
+cs={Views:[MS.reduce((a,x)=>a+x.w.length,0),MS.reduce((a,x)=>a+x.w.filter(t=>t>cw).length,0)],Solution:[MS.length,MS.filter(x=>x.ts>cw).length],Discuss:[MD.length,MD.filter(x=>x.ts>cw).length],Reputation:[AL.reduce((a,x)=>a+x.v.length,0),AL.reduce((a,x)=>a+x.v.filter(y=>y.ts>cw).length,0)]};
+const sv=d=>`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICN={Views:sv('<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/>'),Solution:sv('<path d="M9 3h6M10 3v6L4 20a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1l-6-11V3"/>'),Discuss:sv('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>'),Reputation:sv('<path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"/>')};
+const zero=n=>`<div class="pf-cs"><div class="pf-csn">${ICN[n]}${n}</div><div class="pf-csv">${cs[n][0]}</div><div class="pf-csl">Last week ${cs[n][1]}</div></div>`;
+const R=44,C=2*Math.PI*R,G=C*.75,TT=Q.length||1,DC=["var(--e)","var(--m)","var(--h)"];let off=0;
+const ring=`<svg viewBox="0 0 100 100" class="pf-ringsvg"><g transform="rotate(135 50 50)"><circle cx="50" cy="50" r="${R}" fill="none" stroke="var(--bd)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="${G} ${C-G}"/>${[0,1,2].map(i=>{const l=G*S.n[i]/TT,r=l?`<circle cx="50" cy="50" r="${R}" fill="none" stroke="${DC[i]}" stroke-width="4.5" stroke-dasharray="${l} ${C-l}" stroke-dashoffset="${-off}"/>`:"";off+=l;return r}).join("")}</g></svg>`;
+const wks=[];for(let d=new Date(a0);d<=td;d.setDate(d.getDate()+1)){if(d.getDay()==0){const w=[];w.m=d.getMonth();wks.push(w)}const k=dk(d),c=cnt[k]||0;wks[wks.length-1].push(`<i class="hc l${Math.min(c,4)}" title="${c} submission${c==1?"":"s"} on ${k}"></i>`)}
+const mg=[];wks.forEach(w=>{const l=mg[mg.length-1];if(l&&l.m==w.m)l.w.push(w);else mg.push({m:w.m,w:[w]})});
+const hmh=mg.map(g=>`<div class="pf-mo"><div class="pf-hm">${g.w.map(w=>w.join("")).join("")}</div><div class="pf-ml">${new Date(2000,g.m,1).toLocaleString("en",{month:"short"})}</div></div>`).join("");
+const SKC={Advanced:"#ef4743",Intermediate:"#ffb800",Fundamental:"#2cbb5d"};
+const tg2=e=>`<span class="tg">${esc(e[0])} <span class="mu">×${e[1]}</span></span>`;
+const ci=d=>`<span class="pf-ci">${d}</span>`;
+app.innerHTML=`<div class="prof">
+<div>
+<div class="pf-card"><div class="pf-top"><div class="big pf-av" style="${avs(p)}">${avl(p)}</div><div class="pf-id"><div class="pf-nm">${esc(p.name)}</div><div class="pf-un">@${esc(p.user)}</div><div class="pf-rk" title="Local estimate based on problems solved"><span class="mu">Rank</span> <b>${rank.toLocaleString("en-US")}</b></div></div></div>
+${p.bio?`<p class="pf-bio">${esc(p.bio)}</p>`:""}
+<div class="pf-fol">${(f=>`<span onclick="people('ing')"><b>${f[0]}</b> <span class="mu">Following</span></span><span onclick="people('ers')"><b>${f[1]}</b> <span class="mu">Followers</span></span>`)(FC())}<a onclick="people('all')">Find people</a></div>
+<button class="pf-edit" onclick="editProf()">Edit Profile</button>
+${p.loc?`<div class="pl">📍 ${esc(p.loc)}</div>`:""}${p.edu?`<div class="pl">🎓 ${esc(p.edu)}</div>`:""}${links}</div>
+<div class="pf-card"><div class="pf-h">Community Stats</div><div class="pf-csg">${zero("Views")}${zero("Solution")}${zero("Discuss")}${zero("Reputation")}</div></div>
+<div class="pf-card"><div class="pf-h">Languages</div>${Object.entries(lg).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<div class="pf-lr"><span class="tg">${esc(l)}</span><span class="mu"><b style="color:var(--tx)">${n}</b> problems solved</span></div>`).join("")||'<div class="mu">Solve a problem to see languages.</div>'}</div>
+<div class="pf-card"><div class="pf-h">Skills</div>${sk.map(([n,e])=>`<div class="pf-sk"><div class="pf-skh"><i style="background:${SKC[n]}"></i>${n}</div>${e.slice(0,3).map(tg2).join("")}${e.length>3?`<details><summary>Show more</summary>${e.slice(3).map(tg2).join("")}</details>`:""}</div>`).join("")||'<div class="mu">Your skills appear here as you solve problems.</div>'}</div>
+</div>
+<div class="pf-r">
+<div class="two pf-row2"><div class="pf-card pf-solved"><div class="pf-ringw">${ring}<div class="pf-ringc"><div><b>${S.s}</b><span class="mu">/${Q.length}</span></div><div class="ok pf-sv">✔ Solved</div><div class="mu pf-at">${att} Attempting</div></div></div>
+<div class="pf-dif">${DN.map((n,i)=>`<div class="pf-db"><span class="d${i}">${n.replace("Medium","Med.")}</span><div><b>${S.n[i]}</b><span class="mu">/${S.t[i]}</span></div></div>`).join("")}<div class="mu pf-acc">Acceptance <b>${acc}%</b> · ${subs.length} submission${subs.length==1?"":"s"}</div></div></div>
+<div class="pf-card"><div class="pf-bh"><span class="mu">Badges</span></div><div class="pf-bn">${bn}</div><div class="pf-bl">${B.map(b=>`<span class="bd ${b[1]?"":"off"}" title="${b[1]?"Earned":"Locked"}">🏅 ${b[0]}</span>`).join("")}</div></div></div>
+<div class="pf-card"><div class="pf-hh"><span><b>${yr}</b> submissions in the past one year</span><span class="mu">Total active days: <b>${st.act}</b> · Max streak: <b>${st.max}</b></span></div><div class="pf-hms"><div class="pf-mos">${hmh}</div></div></div>
+<div class="pf-card"><div class="pf-tabs">${[["ac","Recent AC"],["all","List"],["sol","Solutions"],["dis","Discuss"]].map(t=>`<span class="pf-tab ${PT==t[0]?"on":""}" onclick="ptab('${t[0]}')">${t[1]}</span>`).join("")}<span class="sp"></span><a class="pf-va" onclick="ptab('all')">View all submissions ›</a></div>
+<div class="pf-rl">${PT=="sol"?(MS.slice().reverse().map(x=>`<div class="sr" onclick="viewSol(${x.id},()=>profile(1))"><span style="flex:1">${esc(x.t)} <span class="mu">· ${esc(Q[x.pid-1].t)}</span></span><span class="pill">${esc(x.l)}</span><span class="mu">👁 ${x.w.length} ▲ ${x.v.length}</span></div>`).join("")||`<div class="pf-em">No solutions yet. Solve a problem, then share your code from its page.</div>`):PT=="dis"?(MD.slice().reverse().map(x=>`<div class="sr" onclick="open_(${x.pid})"><span style="flex:1">${esc(x.t)} <span class="mu">· ${esc(Q[x.pid-1].t)}</span></span><span class="mu">▲ ${x.v.length}</span><span class="mu">${ago(x.ts)}</span></div>`).join("")||`<div class="pf-em">No discussions yet. Start one from any problem page.</div>`):list.map(x=>`<div class="sr" onclick="open_(${x.id})"><span style="flex:1">${esc(x.t)}</span>${PT=="all"?`<span class="${x.ok?"ok":"d2"}">${x.ok?"Accepted":"Failed"}</span><span class="pill">${esc(x.l)}</span>`:""}<span class="mu">${ago(x.ts)}</span></div>`).join("")||'<div class="pf-em">No submissions yet. Open a problem and press Submit.</div>'}</div></div>
+<div class="mu" style="text-align:center;font-size:12px;padding:8px 0 4px">Copyright © 2026 ProblemX · India</div></div></div>`;
+{const h=document.querySelector(".pf-hms");if(h)h.scrollLeft=h.scrollWidth}
+if(!keep)scrollTo(0,0)}
 /* ---------- MENU PAGES ---------- */
 function setTheme(t){document.documentElement.dataset.t=t;ls("px_theme",t)}
 function modal(h){const o=document.createElement("div");o.className="mo";o.innerHTML=`<div class="md">${h}</div>`;document.body.appendChild(o);o.onclick=e=>{if(e.target==o)o.remove()};o.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>o.remove());return o}
 function info(t,b){modal(`<h3 style="margin:0 0 8px">${esc(t)}</h3><p class="mu">${esc(b)}</p><div style="text-align:right"><button class="sub" data-x>OK</button></div>`)}
-function settings(){const o=modal(`<h3 style="margin:0 0 10px">Settings</h3><div class="mi" data-a="p">👤 Edit profile</div><div class="mi" data-a="c">⚙️ Compiler (Java / C++)</div><div class="mi" data-a="r" style="color:var(--h)">🗑 Reset progress</div><div style="text-align:right;margin-top:10px"><button data-x>Close</button></div>`);
-o.querySelector("[data-a=p]").onclick=()=>{o.remove();editProf()};o.querySelector("[data-a=c]").onclick=()=>{o.remove();cfg()};o.querySelector("[data-a=r]").onclick=()=>{o.remove();resetAll()}}
+function settings(){const o=modal(`<h3 style="margin:0 0 10px">Settings</h3><div class="mi" data-a="p">👤 Edit profile</div><div class="mi" data-a="c">⚙️ Compiler (Java / C++)</div><div class="mi" data-a="e">⬇ Export progress (backup)</div><div class="mi" data-a="i">⬆ Import progress</div><div class="mi" data-a="r" style="color:var(--h)">🗑 Reset progress</div><div style="text-align:right;margin-top:10px"><button data-x>Close</button></div>`);
+o.querySelector("[data-a=p]").onclick=()=>{o.remove();editProf()};o.querySelector("[data-a=c]").onclick=()=>{o.remove();cfg()};o.querySelector("[data-a=r]").onclick=()=>{o.remove();resetAll()};o.querySelector("[data-a=e]").onclick=()=>{o.remove();exportData()};o.querySelector("[data-a=i]").onclick=()=>{o.remove();importData()}}
 function points(){const S=stat(),pts=S.n[0]*10+S.n[1]*20+S.n[2]*30,st=streak();info("Points",`You have ${pts} points: 10 for each Easy, 20 for each Medium and 30 for each Hard problem solved. Current streak: ${st.cur} day${st.cur==1?"":"s"}.`)}
 function FAV(){return ls(K("px_fav"))||[]}
 function toggleFav(id){const f=FAV(),i=f.indexOf(id);i<0?f.push(id):f.splice(i,1);ls(K("px_fav"),f)}
@@ -321,5 +456,43 @@ function playground(){if(CUR=="guest")return auth("in");setNav("");const lg=ls("
 app.innerHTML=`<div style="max-width:900px;margin:0 auto;padding:12px"><div class="panel"><div class="tabs" style="border:0;padding:0 0 10px"><b>My Playground</b><span class="sp"></span><select id="pl">${Object.keys(LANG).map(l=>`<option ${l==lg?"selected":""}>${l}</option>`).join("")}</select><button class="sub" id="pr">▶ Run</button></div><textarea id="pc" rows="14" spellcheck="false" style="width:100%;font:13px/1.5 ui-monospace,monospace;white-space:pre;tab-size:4"></textarea><div class="mu" style="margin-top:8px">Input (stdin)</div><textarea id="pi" rows="3" style="width:100%;font:13px ui-monospace,monospace"></textarea><div id="po" style="margin-top:8px"></div></div></div>`;
 const load=()=>{$("#pc").value=ls(K("px_pg_"+$("#pl").value))??LANG[$("#pl").value]};load();$("#pl").onchange=load;$("#pc").oninput=e=>ls(K("px_pg_"+$("#pl").value),e.target.value);
 $("#pr").onclick=async()=>{$("#po").innerHTML='<div class="mu">Running…</div>';const r=await exec($("#pl").value,$("#pc").value,$("#pi").value);$("#po").innerHTML=`<div class="res ${r.ok?"ok":"d2"}">${r.ok?"Finished":"Error"}</div><pre>${esc(r.out)||"(no output)"}</pre>${r.err?`<pre style="color:var(--h)">${esc(r.err)}</pre>`:""}`}}
+const SKIP=k=>k=="px_users"||k=="px_session";
+function exportData(){const d={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith("px_")&&!SKIP(k))d[k]=localStorage.getItem(k)}const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(d)],{type:"application/json"}));a.download="problemx-backup.json";a.click()}
+function importData(){const i=document.createElement("input");i.type="file";i.accept=".json";i.onchange=async()=>{try{const d=JSON.parse(await i.files[0].text());Object.entries(d).forEach(([k,v])=>{if(k.startsWith("px_")&&!SKIP(k)&&typeof v=="string")localStorage.setItem(k,v)});solved=ls(K("px_solved"))||{};renderAv();profile();info("Import","Progress imported.")}catch(e){info("Import failed","That file is not a valid backup.")}};i.click()}
+function board(){if(CUR=="guest")return auth("in");setNav("");const U=USERS(),pt=[10,20,30];
+const r=Object.keys(U).map(k=>{const sv=ls("px_solved_"+k)||{},ids=Object.keys(sv).map(Number).filter(i=>Q[i-1]);return{k,u:U[k].user,n:ids.length,p:ids.reduce((a,i)=>a+pt[Q[i-1].d],0)}}).sort((a,b)=>b.p-a.p||b.n-a.n);
+app.innerHTML=`<div style="max-width:700px;margin:0 auto;padding:20px"><div class="panel"><h2 style="margin:0 0 4px">🏅 Leaderboard</h2><div class="mu" style="margin-bottom:10px">Accounts on this device, ranked by points.</div>${r.map((x,i)=>`<div class="row" style="grid-template-columns:40px 1fr 90px 80px;${x.k==CUR?"outline:1px solid var(--ac)":""}"><b>${i<3?["🥇","🥈","🥉"][i]:i+1}</b><span>${esc(x.u)}${x.k==CUR?" (you)":""}</span><span class="mu">${x.n} solved</span><b>${x.p} pts</b></div>`).join("")}</div></div>`}
+const PLANS=[["☕ Java Starter","Warm up with every easy Java Basic problem.",x=>x.c=="Java Basic"&&x.d==0],["📚 Array Mastery","Work through all Arrays problems.",x=>x.c=="Arrays"],["🔤 String Skills","All string problems, easy to hard.",x=>x.c=="Strings"],["💼 Interview Crash Course","The Interview set plus easy Stack & Queue and Linked List.",x=>x.c=="Interview"||(["Stack & Queue","Linked List"].includes(x.c)&&x.d==0)],["🧠 DSA Level-Up","Advanced DSA from easy to hard.",x=>x.c=="Advanced DSA"],["🌐 Web Dev Basics","HTML/CSS, JavaScript and React starters.",x=>WEB.includes(x.c)&&x.d<=1],["🔥 Hard Mode","Every hard coding problem.",x=>x.d==2&&!WEB.includes(x.c)]];
+let PO=-1;
+function plans(){if(CUR=="guest")return auth("in");setNav("plans");
+app.innerHTML=`<div style="max-width:900px;margin:0 auto;padding:20px"><h2 style="margin:0 0 4px">Study Plans</h2><div class="mu" style="margin-bottom:14px">Guided problem sets with progress tracking. Tap a plan to expand it.</div>${PLANS.map((p,i)=>{const l=Q.filter(p[2]).sort((a,b)=>a.d-b.d||a.id-b.id),n=l.filter(x=>solved[x.id]).length;return `<div class="panel" style="margin-bottom:12px"><div style="display:flex;gap:10px;cursor:pointer" onclick="PO=PO==${i}?-1:${i};plans()"><b style="flex:1;font-size:16px">${p[0]}</b><span class="mu">${n} / ${l.length}</span></div><div class="mu" style="margin:4px 0 8px">${p[1]}</div><div class="bar2"><i style="width:${l.length?n/l.length*100:0}%"></i></div>${PO==i?l.map(x=>`<div class="row" onclick="open_(${x.id})"><span class="ok">${solved[x.id]?"✔":""}</span><span>${x.id}. ${esc(x.t)}</span><span class="mu">${x.c}</span><span class="d${x.d}">${DN[x.d]}</span></div>`).join(""):""}</div>`}).join("")}</div>`}
+const SOL=()=>ls("px_sols")||[],DIS=()=>ls("px_disc")||[],FOL=k=>ls("px_fol_"+k)||[],uid=()=>Date.now()*1000+Math.floor(Math.random()*1000);
+const FC=()=>{const U=USERS();return[FOL(CUR).filter(k=>U[k]).length,Object.keys(U).filter(k=>FOL(k).includes(CUR)).length]};
+function vote(key,id){const a=ls(key)||[],x=a.find(y=>y.id==id);if(!x)return;if(x.u==CUR)return alert("You can't upvote your own post.");if(x.v.some(y=>y.u==CUR))return;x.v.push({u:CUR,ts:Date.now()});ls(key,a)}
+function viewSol(id,cb){const a=SOL(),x=a.find(y=>y.id==id);if(!x)return;x.w.push(Date.now());x.w=x.w.slice(-2000);ls("px_sols",a);const U=USERS();
+const o=modal(`<h3 style="margin:0 0 4px">${esc(x.t)}</h3><div class="mu">${esc(Q[x.pid-1].t)} · ${esc(x.l)} · by ${esc((U[x.u]||{}).user||"user")} · 👁 ${x.w.length}</div><pre style="max-height:50vh;overflow:auto">${esc(x.c)}</pre><div style="display:flex;gap:8px;justify-content:flex-end"><button id="sv">▲ ${x.v.length}</button>${x.u==CUR?'<button id="sd" style="color:var(--h)">Delete</button>':""}<button data-x>Close</button></div>`);
+o.querySelector("#sv").onclick=()=>{vote("px_sols",x.id);o.remove();cb&&cb()};const d=o.querySelector("#sd");if(d)d.onclick=()=>{if(!confirm("Delete this solution?"))return;ls("px_sols",SOL().filter(y=>y.id!=x.id));o.remove();cb&&cb()};cb&&cb()}
+function comm(id,ta,lg){const box=$("#cm");if(!box)return;const U=USERS(),nm=k=>esc((U[k]||{}).user||"user"),S=SOL().filter(x=>x.pid==id).sort((a,b)=>b.v.length-a.v.length),D=DIS().filter(x=>x.pid==id).sort((a,b)=>b.v.length-a.v.length);
+box.innerHTML=`<b>💬 Solutions (${S.length})</b><div style="margin:6px 0"><button id="ps_">Share my code as a solution</button></div>${S.map(x=>`<div class="sr" data-s="${x.id}"><span style="flex:1">${esc(x.t)} <span class="mu">by ${nm(x.u)}</span></span><span class="pill">${esc(x.l)}</span><span class="mu">👁 ${x.w.length} ▲ ${x.v.length}</span></div>`).join("")}<div class="ms"></div><b>🗨 Discuss (${D.length})</b><input id="dt" placeholder="Title" style="width:100%;margin:6px 0"><textarea id="db" rows="2" placeholder="Start a discussion…" style="width:100%"></textarea><div style="text-align:right;margin:6px 0"><button id="dp">Post</button></div>${D.map(x=>`<div class="panel" style="background:var(--p2);margin-top:6px"><div style="display:flex;gap:8px"><b style="flex:1">${esc(x.t)}</b><span class="mu">${nm(x.u)} · ${ago(x.ts)}</span></div><div style="white-space:pre-wrap">${esc(x.b)}</div><span class="pill" style="cursor:pointer" data-d="${x.id}">▲ ${x.v.length}</span></div>`).join("")}`;
+$("#ps_").onclick=()=>{if(!solved[id])return alert("Solve this problem first, then share your solution.");const c=ta.value.trim();if(!c)return;const t=prompt("Solution title",lg()+" solution");if(!t)return;const a=SOL();a.push({id:uid(),pid:id,u:CUR,t:t.slice(0,80),c:c.slice(0,20000),l:lg(),ts:Date.now(),w:[],v:[]});ls("px_sols",a);comm(id,ta,lg)};
+box.querySelectorAll("[data-s]").forEach(e=>e.onclick=()=>viewSol(e.dataset.s,()=>comm(id,ta,lg)));
+$("#dp").onclick=()=>{const t=$("#dt").value.trim(),b=$("#db").value.trim();if(!t||!b)return alert("Add a title and some text.");const a=DIS();a.push({id:uid(),pid:id,u:CUR,t:t.slice(0,100),b:b.slice(0,3000),ts:Date.now(),v:[]});ls("px_disc",a);comm(id,ta,lg)};
+box.querySelectorAll("[data-d]").forEach(e=>e.onclick=()=>{vote("px_disc",e.dataset.d);comm(id,ta,lg)})}
+function people(t){const U=USERS(),me=FOL(CUR),ers=Object.keys(U).filter(k=>FOL(k).includes(CUR)),ids=t=="ers"?ers:t=="ing"?me.filter(k=>U[k]):Object.keys(U).filter(k=>k!=CUR);
+const row=k=>{const p={name:U[k].user,color:"#ffa116",...(ls("px_prof_"+k)||{})},n=Object.keys(ls("px_solved_"+k)||{}).length;return `<div class="sr" style="cursor:default"><div class="av" style="${avs(p)};margin:0">${avl(p)}</div><span style="flex:1"><b>${esc(p.name)}</b><div class="mu">@${esc(U[k].user)} · ${n} solved</div></span><button data-f="${esc(k)}">${me.includes(k)?"Unfollow":"Follow"}</button></div>`};
+const T=[["ing","Following "+me.filter(k=>U[k]).length],["ers","Followers "+ers.length],["all","Find people"]];
+const o=modal(`<div class="tabs" style="border:0;padding:0 0 8px;flex-wrap:wrap">${T.map(x=>`<span class="tab ${t==x[0]?"on":""}" data-t="${x[0]}">${x[1]}</span>`).join("")}</div>${ids.map(row).join("")||'<div class="mu" style="padding:12px 0">No one here yet. Create another account on this device, then follow it from "Find people".</div>'}<div style="text-align:right;margin-top:10px"><button data-x>Close</button></div>`);
+o.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{o.remove();people(b.dataset.t)});
+o.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{const k=b.dataset.f,a=FOL(CUR),i=a.indexOf(k);i<0?a.push(k):a.splice(i,1);ls("px_fol_"+CUR,a);o.remove();profile(1);people(t)})}
+function DAILY(){return Q[Math.floor(Date.now()/864e5)%Q.length]}
+let CT;
+function contest(){if(CUR=="guest")return auth("in");setNav("contest");clearInterval(CT);const c=ls(K("px_ct")),live=c&&c.end>Date.now(),pts=[10,20,30];
+const pk=d=>{const l=Q.filter(x=>x.d==d&&!WEB.includes(x.c)),u=l.filter(x=>!solved[x.id]),p=u.length?u:l;return p[Math.floor(Math.random()*p.length)].id};
+const done=id=>SUBS().some(s=>s.id==id&&s.ok&&s.ts>=c.start),sc=()=>c.ids.reduce((a,id)=>a+(done(id)?pts[Q[id-1].d]:0),0);
+const fm=t=>{t=Math.max(0,t);return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+const rows=()=>c.ids.map(id=>{const q=Q[id-1];return `<div class="row" onclick="open_(${id})"><span class="ok">${done(id)?"✔":""}</span><span>${esc(q.t)}</span><span class="d${q.d}">${DN[q.d]}</span><span class="mu">${pts[q.d]} pts</span></div>`}).join("");
+app.innerHTML=`<div style="max-width:800px;margin:0 auto;padding:20px"><div class="panel"><h2 style="margin:0 0 4px">🏆 Mock Contest</h2><div class="mu" style="margin-bottom:12px">Solve 3 problems (Easy, Medium, Hard) in 60 minutes. Points: 10 / 20 / 30.</div>${c?`<div style="display:flex;gap:16px;align-items:center;margin-bottom:8px"><b id="ctt" style="font-size:22px">${live?fm(Math.round((c.end-Date.now())/1e3)):"Finished"}</b><span>Score <b id="cts">${sc()}</b> / 60</span></div>${rows()}`:""}<div style="margin-top:14px"><button class="sub" id="cs">${live?"Restart with new problems":"Start contest"}</button></div></div></div>`;
+$("#cs").onclick=()=>{if(live&&!confirm("Abandon the current contest?"))return;ls(K("px_ct"),{start:Date.now(),end:Date.now()+36e5,ids:[pk(0),pk(1),pk(2)]});contest()};
+if(live)CT=setInterval(()=>{const t=$("#ctt");if(!t)return clearInterval(CT);const r=Math.round((c.end-Date.now())/1e3);if(r<=0){clearInterval(CT);return contest()}t.textContent=fm(r);$("#cts").textContent=sc()},1000)}
 renderAv();profile();
 </script></body></html>
