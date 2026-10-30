@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ProblemX – Practice coding problems</title>
+<style>
+:root{--bg:#1a1a1a;--p1:#282828;--p2:#333;--bd:#3e3e3e;--tx:#eff1f6;--mu:#9a9a9a;--ac:#ffa116;--e:#2cbb5d;--m:#ffb800;--h:#ef4743}
+:root[data-t=light]{--bg:#f0f0f0;--p1:#fff;--p2:#f3f3f3;--bd:#e0e0e0;--tx:#262626;--mu:#6b6b6b;--e:#00a35c;--m:#d98c00;--h:#d9302c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;height:100vh;height:100dvh;display:flex;flex-direction:column}
+header{display:flex;align-items:center;gap:6px;padding:0 16px;height:50px;background:var(--p1);border-bottom:1px solid var(--bd);flex:none}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;cursor:pointer;margin-right:14px;white-space:nowrap}.logo b{color:var(--ac)}
+.lg{display:grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--ac);color:#1a1a1a;font:800 12px ui-monospace,monospace}
+nav{display:flex;gap:2px}nav a{padding:6px 12px;border-radius:6px;color:var(--mu);cursor:pointer;font-weight:500}nav a:hover,nav a.on{color:var(--tx)}nav a.on{background:var(--p2)}
+.hb{display:flex;align-items:center;gap:6px;background:transparent;color:var(--mu);padding:6px 10px}.hb:hover{color:var(--tx);background:var(--p2)}
+.av{width:28px;height:28px;border-radius:50%;background:var(--ac);color:#1a1a1a;display:grid;place-items:center;font-weight:700;margin-left:6px}
+.sp{flex:1}
+#mn{display:none;position:fixed;right:14px;top:52px;background:var(--p1);border:1px solid var(--bd);border-radius:8px;min-width:170px;padding:4px;z-index:20;box-shadow:0 6px 20px #0006}
+.mi{padding:8px 12px;border-radius:6px;cursor:pointer}.mi:hover{background:var(--p2)}
+.prof{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:300px 1fr;gap:16px}.prof>div{display:flex;flex-direction:column;gap:16px;min-width:0}
+.big{width:84px;height:84px;border-radius:12px;display:grid;place-items:center;font:700 38px system-ui;color:#1a1a1a}
+.pl{margin:8px 0;color:var(--mu);word-break:break-all}.pl a{color:var(--ac);text-decoration:none}
+.bar2{height:6px;border-radius:3px;background:var(--p2);overflow:hidden;margin:3px 0 10px}.bar2 i{display:block;height:100%;background:var(--ac)}
+.hm{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,12px);gap:3px;overflow:auto;padding-bottom:6px}
+.hc{width:12px;height:12px;border-radius:3px;background:var(--p2)}.l1{background:#0e4429}.l2{background:#006d32}.l3{background:#26a641}.l4{background:#39d353}
+.bd{display:inline-block;padding:5px 10px;border-radius:16px;background:var(--p2);margin:0 6px 6px 0}.bd.off{opacity:.35}
+.sr{display:flex;gap:10px;padding:9px 6px;border-bottom:1px solid var(--bd);cursor:pointer;align-items:center}.sr:hover{background:var(--p2)}
+.mo{position:fixed;inset:0;background:#0009;display:grid;place-items:center;z-index:30;padding:16px}.md{background:var(--p1);border-radius:12px;padding:20px;width:min(460px,100%);max-height:90vh;overflow:auto}
+.md label{display:block;margin:10px 0 3px;color:var(--mu);font-size:12px}.md input,.md textarea{width:100%}
+#au{display:flex;align-items:center;gap:2px}.fi{width:100%;margin-bottom:10px;padding:10px 12px}.er{color:var(--h);min-height:20px;margin-bottom:6px}
+.ml{display:grid;grid-auto-flow:column;grid-auto-columns:12px;gap:3px;font-size:11px;color:var(--mu);height:16px;white-space:nowrap}
+.sb{padding:8px 12px;border-radius:8px;background:var(--p2);flex:1;text-align:center}.tg{display:inline-block;padding:2px 9px;border-radius:12px;background:var(--p2);margin:0 5px 5px 0;font-size:12px}
+details summary{cursor:pointer;color:var(--mu);margin-top:4px}
+@media(max-width:800px){.prof,.two{grid-template-columns:1fr!important}}
+#hm{display:none}
+body.guest nav,body.guest #hm,body.guest .gh,body.guest #au{display:none}
+@media(max-width:700px){header{padding:0 8px;gap:2px}#hm{display:flex;font-size:18px}.logo{margin-right:auto;font-size:16px}header>.sp{display:none}nav{display:none;position:fixed;top:50px;left:0;right:0;flex-direction:column;background:var(--p1);border-bottom:1px solid var(--bd);padding:6px;z-index:25;box-shadow:0 8px 20px #0006}nav.open{display:flex}nav a{padding:12px}.hb span:not(#hs){display:none}}
+@media(max-width:480px){.su{display:none}}
+button,select,input,textarea{font:inherit;color:var(--tx);background:var(--p2);border:1px solid transparent;border-radius:6px;padding:6px 12px}
+button{cursor:pointer}button:hover{filter:brightness(1.15)}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--ac)}
+.run{background:var(--p2)}.sub{background:var(--e);color:#fff;font-weight:600}.ic{padding:6px 9px}
+#app{flex:1;min-height:0;overflow:auto}
+.home{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1fr 280px;gap:20px}
+.panel{background:var(--p1);border-radius:10px;padding:14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.bar input{flex:1;min-width:160px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.chip{background:var(--p2);border-radius:14px;padding:3px 11px;font-size:12px;cursor:pointer;color:var(--mu)}.chip.on{background:var(--tx);color:var(--bg)}
+.row{display:grid;grid-template-columns:28px 1fr 90px 70px;gap:8px;padding:10px 8px;border-radius:6px;cursor:pointer;align-items:center}
+.row:nth-child(odd){background:var(--p2)}.row:hover{outline:1px solid var(--bd)}
+.d0{color:var(--e)}.d1{color:var(--m)}.d2{color:var(--h)}.mu{color:var(--mu)}.ok{color:var(--e)}
+.ring{width:110px;height:110px;border-radius:50%;margin:6px auto 14px;display:grid;place-items:center;background:conic-gradient(var(--e) calc(var(--p)*1%),var(--p2) 0)}
+.ring div{width:88px;height:88px;border-radius:50%;background:var(--p1);display:grid;place-items:center;text-align:center;line-height:1.2}
+.pr{display:flex;justify-content:space-between;padding:6px 10px;background:var(--p2);border-radius:6px;margin-top:6px}
+.ws{display:grid;grid-template-columns:minmax(260px,min(var(--lw,42%),70%)) 8px minmax(0,1fr);gap:0;padding:8px;height:100%}
+.col{background:var(--p1);border-radius:10px;display:flex;flex-direction:column;min-height:0;min-width:0}
+.tabs{display:flex;gap:4px;padding:6px 8px;border-bottom:1px solid var(--bd);align-items:center;flex:none}
+.tab{padding:4px 10px;border-radius:6px;cursor:pointer;color:var(--mu)}.tab.on{color:var(--tx);background:var(--p2)}
+.scr{overflow:auto;padding:14px 16px;flex:1}
+.right{display:grid;grid-template-rows:minmax(0,1fr) 8px var(--ch,38%);gap:0;min-height:0;height:100%}
+.rz{border-radius:4px;transition:background .15s;touch-action:none}#rv{cursor:col-resize}#rh{cursor:row-resize}.rz:hover,.rz.drag{background:var(--ac)}
+.mtabs,.mbar,.qk{display:none}
+.ed{display:flex;flex:1;min-height:0;font:13px/1.55 ui-monospace,Consolas,monospace}
+#gut{padding:10px 8px;text-align:right;color:var(--mu);background:var(--p1);overflow:hidden;user-select:none;white-space:pre}
+#code{flex:1;border:0;border-radius:0;background:var(--p1);resize:none;outline:0;padding:10px;white-space:pre;overflow:auto;tab-size:4;font:inherit}
+pre{background:var(--p2);border-radius:6px;padding:10px;margin:6px 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,Consolas,monospace}
+.res{font-size:16px;font-weight:700}.case{display:inline-block;padding:3px 10px;margin:0 6px 6px 0;border-radius:6px;background:var(--p2);cursor:pointer}.case.on{outline:1px solid var(--mu)}
+.pill{padding:1px 10px;border-radius:12px;background:var(--p2);font-size:12px}
+@media(max-width:860px){
+.home{grid-template-columns:1fr;padding:10px;gap:10px}.home>.panel{min-width:0}
+.home>.panel:last-child{order:-1;display:grid;grid-template-columns:96px 1fr;gap:6px 14px;align-items:center}
+.home>.panel:last-child .ring{grid-row:1/4;width:88px;height:88px;margin:0}.home>.panel:last-child .ring div{width:68px;height:68px;font-size:11px}.home>.panel:last-child .pr{margin:0}
+.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.chip{flex:none;white-space:nowrap;padding:5px 12px}
+.row{grid-template-columns:22px 1fr 60px;padding:12px 8px}.row span:nth-child(3){display:none}
+.prof{padding:10px}
+input,select,textarea{font-size:16px}#inp{font-size:16px!important}button{min-height:36px}.ed{font-size:16px}
+.ws{display:flex;flex-direction:column;padding:0;height:100%}
+.mtabs{display:flex;flex:none;background:var(--p1);border-bottom:1px solid var(--bd)}
+.mt{flex:1;text-align:center;padding:11px 4px;color:var(--mu);font-weight:600;border-bottom:2px solid transparent;cursor:pointer}.mt.on{color:var(--tx);border-color:var(--ac)}
+.ws>.col,.right{display:none;flex:1;min-height:0;border-radius:0}
+.ws[data-m=desc]>.dcol{display:flex}
+.ws[data-m=code] .right,.ws[data-m=res] .right{display:flex;flex-direction:column;height:auto}
+.right>.col{flex:1;min-height:0;border-radius:0}
+.ws[data-m=code] .ccol,.ws[data-m=res] .ecol{display:none}
+.rz,.dk{display:none}
+.ccol iframe{min-height:320px}
+.qk{display:flex;gap:4px;padding:6px;overflow-x:auto;background:var(--p1);border-top:1px solid var(--bd);flex:none}.qk button{flex:none;min-width:40px;font-family:ui-monospace,monospace}
+.mbar{display:flex;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--p1);border-top:1px solid var(--bd);flex:none}.mbar button{flex:1;padding:10px}
+}
+body.guest nav,body.guest #hm,body.guest .gh,body.guest #au{display:none}
+#mn{min-width:270px;max-width:calc(100vw - 28px);max-height:calc(100dvh - 70px);overflow:auto;padding:6px}
+#mn .mi,.md .mi{display:flex;align-items:center;gap:10px}
+.pm{margin:6px 4px;padding:10px 12px;border-radius:8px;background:linear-gradient(135deg,#5b3a00,#2b1c00);color:#ffd27a;cursor:pointer;font-size:13px;font-weight:600}
+:root[data-t=light] .pm{background:#fff3da;color:#8a5a00}
+.qg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:4px}
+.qt{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:8px;background:var(--p2);cursor:pointer;font-size:12px;text-align:center}.qt:hover{filter:brightness(1.15)}.qt i{font-style:normal;font-size:18px}
+.ms{height:1px;background:var(--bd);margin:6px 0}
+.seg{display:flex;gap:4px;margin-left:auto}.seg b{padding:2px 10px;border-radius:12px;background:var(--p2);font-weight:500;font-size:12px}.seg b.on{background:var(--ac);color:#1a1a1a}
+@media(max-width:860px){#pc,#pi{font-size:16px!important}}
+</style></head><body>
+<header><button class="hb" id="hm" aria-label="Menu" onclick="event.stopPropagation();document.querySelector('nav').classList.toggle('open')">☰</button><div class="logo" onclick="go('problems')"><span class="lg">&lt;/&gt;</span><span>Problem<b>X</b></span></div>
+<nav><a data-n="explore" onclick="go('explore')">Explore</a><a data-n="problems" onclick="go('problems')">Problems</a><a data-n="interview" onclick="go('interview')">Interview</a><a data-n="random" onclick="go('random')">Random</a></nav>
+<span class="sp"></span><button class="hb gh" title="Day streak" onclick="profile()">🔥<span id="hs">0</span></button><button class="hb gh" onclick="cfg()" title="Compiler settings">⚙<span>Compiler</span></button><button class="hb" onclick="theme()" title="Toggle theme">◐</button><span id="au"></span><div id="mn"></div></header>
+<div id="app"></div>
+<script>
+const CATS="HTML/CSS|Semantic HTML Structure~0;CSS Selectors Practice~0;Form with Validation Styling~1;Flexbox Card Layout~1;CSS Grid Gallery~2;Sticky Header Navigation~1;Two-Column Layout~1;Media Query Responsive Text~1;Table Styling~0;CSS Variable Theme Switcher~2\nJavaScript|Counter Widget~0;To-Do List~1;Simple Calculator~1;Modal Dialog~1;Tabbed Content~1;Search and Filter List~1;LocalStorage Counter~1;Dark/Light Theme Toggle~2;Event Delegation List~2;Form Validation~2\nReact|Counter with useState~0;Effect Counter~1;Props Greeting~0;Conditional Rendering Banner~0;Todo List with State~1;Controlled Form~1;Fetch Data from API~2;Custom Hook useCounter~2;Theme Toggle with Context~2;Search Filter with Debounce~2\nJava Basic|Hello World~0;Variable Assignment~0;String Input with Scanner~0;If Else Grade Check~0;Switch Day of Week~0;For Loop Sum~0;While Loop Countdown~0;Do While Menu~0;Method Addition~0;Even Odd Check~0;Nested Loop Star Triangle~1;Multiplication Table~1;Factorial of a Number~1;Sum of Digits~1;Reverse a Number~1;Prime Number Check~2;Pyramid Pattern~2;Fibonacci Sequence~2;Armstrong Number~2;Greatest of Three Numbers~2\nJava Intermediate|Array Max Element~0;String Reverse~0;Array Copy~0;Palindrome Check~1;Count Vowels~1;Method Overloading Example~1;Class and Object~1;Constructor Overloading~1;Static Variable~1;This Keyword~1;Inheritance Example~1;Super Keyword Usage~1;Encapsulation with Getters Setters~1;Abstract Class~2;Interface Implementation~2;Exception Handling~2;ArrayList Basics~2;Method Overriding~2;This vs Super~2;IS-A vs HAS-A~2\nJava Hard|Diamond Pattern~2;Hollow Square Pattern~2;Number Pattern Pyramid~2;Kadane Algorithm Maximum Subarray~2;Two Sum Pair~2;Polymorphism with Method Overriding~2;Interface vs Abstract Class~2;Constructor Chaining~2;Real World OOP Design~2;String Buffer vs Builder~2;Hollow Diamond Pattern~2;Multiple Inheritance via Interfaces~2;Method Overriding Rules~2;Encapsulation with Validation~2;Interface Default Methods~2;Polymorphism with Interfaces~2;Static vs Instance Members~2;Super Constructor Call~2;Object Composition Example~2;Abstract vs Interface Comparison~2\nArrays|Maximum Element~0;Minimum Element~0;Reverse Array~0;Linear Search~0;Duplicate Element~1;Sort Array Ascending~1;Frequency Count~1;Two Sum~1;Prefix Sum~1;Sliding Window Sum~1;Two Pointers Pair Sum~1;Subarray Maximum Sum~2;Rotate Array~2;Merge Two Sorted Arrays~2;Missing Number~2;Majority Element~2;Best Time to Buy and Sell Stock~2;Container With Most Water~2;Product of Array Except Self~2;Search in Rotated Sorted Array~2\nStrings|Reverse String~0;Palindrome Check~0;Character Frequency~0;Anagram Check~1;Duplicate Characters~1;String Compression~1;Longest Substring Without Repeating Characters~2;String Rotation Check~1;Count Words~0;Substring Search~1;Longest Palindrome Substring~2;String to Integer~1;Remove Vowels~0;First Non-Repeating Character~2;String Multiplication~2;Group Anagrams~2;String Matching Rabin-Karp~2;Text Justification~2;Valid Parentheses~2;Longest Common Prefix~0\nLinked List|Create and Traverse Linked List~0;Insert at End~0;Delete a Node~0;Search in Linked List~0;Find Middle Node~1;Reverse Linked List~1;Detect Cycle~2;Remove Duplicates~1;Merge Two Sorted Lists~2;Find Nth Node from End~2;Intersection of Two Lists~2;Add Two Numbers as Lists~2;Copy List with Random Pointers~2;Doubly Linked List Insert~0;Doubly Linked List Delete~0;Circular Linked List Insert~1;Detect Loop in Linked List~2;Swap Nodes in Pairs~2;Rotate Linked List~2;Flatten Multilevel List~2\nStack & Queue|Stack Push and Pop~0;Balanced Parentheses~1;Reverse a Stack~1;Min Stack~2;Next Greater Element~2;Evaluate Postfix Expression~2;Queue Using Stacks~2;Implement Circular Queue~1;Priority Queue with Heap~2;Sliding Window Maximum~2;Stack Using Queues~2;Sort a Stack~2;Queue Implementation with Array~0;Deque Implementation~0;First Non-Repeating Character in Stream~2;Next Smaller Element~2;Largest Rectangle in Histogram~2;Queue Reconstruction by Height~2;Implement Two Stacks in One Array~2;Generate Binary Numbers Using Queue~0\nAdvanced DSA|Basic Binary Search~0;First Occurrence in Sorted Array~1;Search in Rotated Sorted Array~2;Tree Traversal (Inorder)~0;Tree Height~1;BST Search~0;BFS Graph Traversal~1;DFS Graph Traversal~1;Connected Components~2;Fibonacci with DP~0;Climbing Stairs DP~1;0/1 Knapsack~2;Longest Common Subsequence~2;Min Heap Operations~0;Kth Largest Element~1;HashMap Frequency Count~0;HashSet Duplicate Detection~0;Activity Selection Greedy~1;Merge Intervals~2;House Robber DP~2\nInterview|Reverse an Array In Place~0;Check Anagram~0;Find Middle of Linked List~0;Factorial Using Recursion~0;Linear Search~0;Bubble Sort Array~1;String Builder Concatenation~1;Reverse a String~0;Stack Push Pop Sequence~1;Two Sum Pair Check~0";
+const DN=["Easy","Medium","Hard"],WEB=["HTML/CSS","JavaScript","React"];
+const Q=[];CATS.split("\n").forEach(l=>{const[c,s]=l.split("|");s.split(";").forEach(x=>{const[t,d]=x.split("~");Q.push({id:Q.length+1,t,c,d:+d})})});
+/* Test cases for stdin/stdout problems: [input, expected]. Add more here. */
+const TESTS={"Hello World":[["","Hello, World!"]],"Even Odd Check":[["4","Even"],["7","Odd"],["0","Even"]],"Factorial of a Number":[["5","120"],["0","1"],["10","3628800"]],"Sum of Digits":[["123","6"],["9","9"],["1000","1"]],"Reverse a Number":[["1234","4321"],["500","5"]],"Prime Number Check":[["7","Prime"],["10","Not Prime"],["2","Prime"]],"Fibonacci Sequence":[["5","0 1 1 2 3"],["1","0"]],"Armstrong Number":[["153","Yes"],["123","No"]],"Greatest of Three Numbers":[["3 9 4","9"],["-1 -5 -3","-1"]],"For Loop Sum":[["5","15"],["1","1"]]};
+const LANG={Java:`import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n        // Write your solution here\n        System.out.println("Hello, ProblemX!");\n    }\n}`,Python:`# Write your solution here\nprint("Hello, ProblemX!")`,JavaScript:`const lines = require('fs').readFileSync(0,'utf8').split('\\n');\n// Write your solution here\nconsole.log("Hello, ProblemX!");`,"C++":`#include <bits/stdc++.h>\nusing namespace std;\nint main(){\n    // Write your solution here\n    cout << "Hello, ProblemX!" << endl;\n    return 0;\n}`};
+const J0ID={Java:62,Python:71,JavaScript:63,"C++":54};
+const WT={"HTML/CSS":`<!-- HTML + CSS -->\n<style>\n  body{font-family:sans-serif}\n</style>\n<h1>Hello, ProblemX!</h1>`,JavaScript:`<button id="b">Click</button> <span id="o">0</span>\n<script>\n  let n=0;b.onclick=()=>o.textContent=++n;\n<\/script>`,React:`<div id="root"></div>\n<script type="text/babel">\n  function App(){\n    const [n,setN]=React.useState(0);\n    return <button onClick={()=>setN(n+1)}>Count: {n}</button>;\n  }\n  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);\n<\/script>`};
+const RS='<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.min.js"><\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"><\/script>';
+const $=s=>document.querySelector(s),app=$("#app"),esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const ls=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
+let CUR=ls("px_session")||"guest";const K=k=>k+"_"+CUR;let solved=ls(K("px_solved"))||{},F={q:"",c:"",d:""};
+function theme(){const t=document.documentElement.dataset.t=="light"?"dark":"light";document.documentElement.dataset.t=t;ls("px_theme",t)}
+document.documentElement.dataset.t=ls("px_theme")||(matchMedia("(prefers-color-scheme:light)").matches?"light":"dark");
+const CF=()=>ls("px_cfg")||{url:"https://ce.judge0.com",key:"",host:""};
+function cfg(){const j=CF(),u=prompt("Judge0 URL for Java/C++ (optional – Wandbox is used as fallback)",j.url);if(u===null)return;
+const k=prompt("RapidAPI key (empty for self-hosted/public)",j.key)||"";let h="";if(k)h=prompt("RapidAPI host",j.host||"judge0-ce.p.rapidapi.com")||"judge0-ce.p.rapidapi.com";ls("px_cfg",{url:u.replace(/\/$/,""),key:k,host:h})}
+
+/* ---------- RUNNERS ---------- */
+function runJS(src,stdin){return new Promise(res=>{
+const code=`let out="",err="";const console={log:(...a)=>out+=a.join(" ")+"\\n",error:(...a)=>err+=a.join(" ")+"\\n"};
+const require=()=>({readFileSync:()=>${JSON.stringify(stdin)}});
+try{(new Function("console","require",${JSON.stringify(src)}))(console,require)}catch(e){err+=e.stack||e}
+postMessage({out,err})`;
+const w=new Worker(URL.createObjectURL(new Blob([code])));const t=setTimeout(()=>{w.terminate();res({ok:false,out:"",err:"Time Limit Exceeded (5s)"})},5000);
+w.onmessage=e=>{clearTimeout(t);w.terminate();res({ok:!e.data.err,out:e.data.out,err:e.data.err})};w.onerror=e=>{clearTimeout(t);res({ok:false,out:"",err:e.message})}})}
+let pyP;function loadPy(){return pyP||(pyP=new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/pyodide@0.26.4/full/pyodide.js";s.onload=()=>loadPyodide().then(ok,no);s.onerror=()=>{pyP=null;no(new Error("Could not load Python runtime (check internet)"))};document.head.appendChild(s)}))}
+async function runPy(src,stdin){try{const py=await loadPy();let out="",err="";py.setStdout({batched:s=>out+=s+"\n"});py.setStderr({batched:s=>err+=s+"\n"});
+const lines=stdin.split("\n");py.setStdin({stdin:()=>lines.length?lines.shift():null});
+try{await py.runPythonAsync(src)}catch(e){err+=String(e.message||e).split("\n").slice(-4).join("\n")}return{ok:!err,out,err}}catch(e){return{ok:false,out:"",err:e.message}}}
+const post=(u,b,h)=>fetch(u,{method:"POST",headers:{"Content-Type":"application/json",...h},body:JSON.stringify(b)});
+async function j0(l,src,stdin){const c=CF(),b=s=>btoa(unescape(encodeURIComponent(s))),d=s=>s?decodeURIComponent(escape(atob(s))):"";const h={};if(c.key){h["X-RapidAPI-Key"]=c.key;h["X-RapidAPI-Host"]=c.host}
+const ctl=new AbortController();setTimeout(()=>ctl.abort(),15000);
+const r=await fetch(c.url+"/submissions?base64_encoded=true&wait=true",{method:"POST",signal:ctl.signal,headers:{"Content-Type":"application/json",...h},body:JSON.stringify({source_code:b(src),language_id:J0ID[l],stdin:b(stdin)})});
+if(!r.ok)throw new Error("Judge0 HTTP "+r.status);const x=await r.json();if(!x.status)throw new Error("Judge0 bad response");
+const err=d(x.compile_output)+d(x.stderr)+d(x.message);return{ok:x.status.id==3,out:d(x.stdout),err:err||(x.status.id==3?"":x.status.description)}}
+let WB;async function wandbox(l,src,stdin){if(!WB){const r=await fetch("https://wandbox.org/api/list.json");WB=await r.json()}
+const pick=l=="Java"?WB.filter(x=>x.language=="Java"&&/^openjdk-jdk-\d/.test(x.name)):WB.filter(x=>x.language=="C++"&&/^gcc-\d/.test(x.name));
+const name=pick.map(x=>x.name).sort((a,b)=>a.localeCompare(b,0,{numeric:true})).pop();if(!name)throw new Error("No compiler on Wandbox");
+const r=await post("https://wandbox.org/api/compile.json",{compiler:name,code:src,stdin,options:l=="C++"?"warning,boost-nothing,std=c++17":""});
+if(!r.ok)throw new Error("Wandbox HTTP "+r.status);const x=await r.json();
+return{ok:x.status=="0",out:x.program_output||"",err:(x.compiler_error||"")+(x.program_error||"")}}
+async function runRemote(l,src,stdin){const errs=[];for(const f of [j0,wandbox]){try{return await f(l,src,stdin)}catch(e){errs.push(e.message)}}
+return{ok:false,out:"",err:"Online compiler unreachable:\n"+errs.join("\n")+"\n\nTip: Python and JavaScript run offline in your browser. For Java/C++ check your internet or set a Judge0 server via ⚙ Compiler."}}
+const exec=(l,s,i)=>l=="JavaScript"?runJS(s,i):l=="Python"?runPy(s,i):runRemote(l,s,i);
+
+/* ---------- NAV ---------- */
+function setNav(n){document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.n==n));$("#hs").textContent=streak().cur}
+function go(n){if(CUR=="guest")return auth("in");if(n=="random"){const u=Q.filter(x=>!solved[x.id]);const p=u.length?u:Q;return open_(p[Math.floor(Math.random()*p.length)].id)}
+if(n=="explore")return explore();F={q:"",c:n=="interview"?"Interview":"",d:""};home()}
+/* ---------- HOME ---------- */
+function stat(){const n=[0,0,0],t=[0,0,0];Q.forEach(x=>{t[x.d]++;if(solved[x.id])n[x.d]++});return{n,t,s:n[0]+n[1]+n[2]}}
+function home(){if(CUR=="guest")return auth("in");const L=Q.filter(x=>(!F.c||x.c==F.c)&&(F.d===""||x.d==F.d)&&x.t.toLowerCase().includes(F.q.toLowerCase()));const S=stat();setNav(F.c=="Interview"?"interview":"problems");
+const cats=[...new Set(Q.map(x=>x.c))];
+app.innerHTML=`<div class="home"><div class="panel"><div class="bar"><input id="s" placeholder="Search questions" value="${esc(F.q)}"><select id="d"><option value="">Difficulty</option>${DN.map((n,i)=>`<option value="${i}" ${F.d===String(i)?"selected":""}>${n}</option>`).join("")}</select><button id="rnd">Pick random</button></div>
+<div class="chips">${["All",...cats].map(c=>`<span class="chip ${(F.c||"All")==c?"on":""}" data-c="${c}">${c}</span>`).join("")}</div>
+<div class="mu" style="margin-bottom:6px">${L.length} problems</div>
+${L.map(x=>`<div class="row" onclick="open_(${x.id})"><span class="ok">${solved[x.id]?"✔":""}</span><span>${x.id}. ${esc(x.t)}</span><span class="mu">${x.c}</span><span class="d${x.d}">${DN[x.d]}</span></div>`).join("")||'<div class="mu" style="padding:20px">No problems match. Clear the search or pick another topic.</div>'}</div>
+<div class="panel" style="align-self:start"><div class="ring" style="--p:${S.s/Q.length*100}"><div><b style="font-size:22px">${S.s}</b><span class="mu">/ ${Q.length} solved</span></div></div>
+${DN.map((n,i)=>`<div class="pr"><span class="d${i}">${n}</span><span>${S.n[i]} / ${S.t[i]}</span></div>`).join("")}</div></div>`;
+$("#s").oninput=e=>{F.q=e.target.value;const p=e.target.selectionStart;home();const n=$("#s");n.focus();n.setSelectionRange(p,p)};$("#d").onchange=e=>{F.d=e.target.value;home()};
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{F.c=c.dataset.c=="All"?"":c.dataset.c;home()});
+$("#rnd").onclick=()=>{const u=L.filter(x=>!solved[x.id]);const p=(u.length?u:L);if(p.length)open_(p[Math.floor(Math.random()*p.length)].id)}}
+
+/* ---------- EXPLORE ---------- */
+function explore(){if(CUR=="guest")return auth("in");setNav("explore");const cats=[...new Set(Q.map(x=>x.c))];
+const card=c=>{const l=Q.filter(x=>x.c==c),n=l.filter(x=>solved[x.id]).length,dd=[0,1,2].map(i=>l.filter(x=>x.d==i).length);
+return `<div class="panel xc" data-c="${esc(c)}" style="cursor:pointer"><b style="font-size:16px">${esc(c)}</b><div class="mu" style="margin:4px 0 8px">${n} / ${l.length} solved</div><div class="bar2"><i style="width:${n/l.length*100}%"></i></div><div style="font-size:12px"><span class="d0">${dd[0]} Easy</span> · <span class="d1">${dd[1]} Med.</span> · <span class="d2">${dd[2]} Hard</span></div></div>`};
+app.innerHTML=`<div style="max-width:1100px;margin:0 auto;padding:20px"><h2 style="margin:0 0 4px">Explore</h2><div class="mu" style="margin-bottom:14px">Pick a topic and practise it from easy to hard.</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px">${cats.map(card).join("")}</div></div>`;
+app.querySelectorAll(".xc").forEach(e=>e.onclick=()=>{F={q:"",c:e.dataset.c,d:""};home()});app.scrollTop=0}
+
+/* ---------- PROBLEM ---------- */
+function open_(id){if(CUR=="guest")return auth("in");setNav("problems");const q=Q[id-1],web=WEB.includes(q.c),lg=ls("px_lang")||"Java",T=TESTS[q.t]&&!web?TESTS[q.t]:null;
+const desc=web?`<p>Build a working solution for <b>${esc(q.t)}</b> using ${q.c}. Edit the code and press <b>Run</b> to refresh the live preview.</p><p class="mu">Submit marks the problem solved once the preview renders without errors.</p>`
+:`<p>Write a program that solves <b>${esc(q.t)}</b>. Read input from standard input and print the answer to standard output.</p>${T?`<h4>Examples</h4>${T.slice(0,2).map((t,i)=>`<b>Example ${i+1}</b><pre>Input:  ${esc(t[0]||"(none)")}\nOutput: ${esc(t[1])}</pre>`).join("")}<p class="mu">Submit runs all ${T.length} test cases.</p>`:`<p class="mu">This problem has no built-in test cases yet. Submit marks it solved when your code compiles and runs without errors. Add cases to <code>TESTS</code> in the source to auto-check it.</p>`}`;
+app.innerHTML=`<div class="ws" data-m="desc"><div class="mtabs"><span class="mt on" data-m="desc">Description</span><span class="mt" data-m="code">Code</span><span class="mt" data-m="res">${web?"Preview":"Testcase"}</span></div><div class="col dcol"><div class="tabs"><span class="tab on">Description</span><span class="sp"></span><button class="ic" id="fv" title="Add to favorites">☆</button><button class="ic" id="pv" title="Previous">‹</button><button class="ic" id="nx" title="Next">›</button><button class="ic" onclick="home()">☰ List</button></div>
+<div class="scr"><h2 style="margin:0 0 8px">${q.id}. ${esc(q.t)}</h2><span class="pill d${q.d}">${DN[q.d]}</span> <span class="pill">${q.c}</span> ${solved[id]?'<span class="pill ok">✔ Solved</span>':""}<div style="margin-top:12px">${desc}</div></div></div>
+<div class="rz" id="rv"></div><div class="right"><div class="col ecol" style="min-height:0"><div class="tabs">${web?`<span class="pill">${q.c}</span>`:`<select id="l">${Object.keys(LANG).map(l=>`<option ${l==lg?"selected":""}>${l}</option>`).join("")}</select>`}<span class="sp"></span><button class="ic" id="rs" title="Reset code">↺</button><button class="run dk" id="run">▶ Run</button><button class="sub dk" id="sub">Submit</button></div>
+<div class="ed"><div id="gut">1</div><textarea id="code" spellcheck="false" autocapitalize="off"></textarea></div><div class="qk"></div></div><div class="rz" id="rh"></div>
+<div class="col ccol"><div class="tabs"><span class="tab on" id="t1">${web?"Preview":"Testcase"}</span><span class="tab" id="t2">Result</span></div><div class="scr" id="cons"></div></div></div><div class="mbar"><button class="run" onclick="document.getElementById('run').click()">▶ Run</button><button class="sub" onclick="document.getElementById('sub').click()">Submit</button></div></div>`;
+const ta=$("#code"),key="px_code_"+id+"_";let cur=1;
+const lang=()=>web?q.c:$("#l").value;
+const gut=()=>{$("#gut").textContent=ta.value.split("\n").map((_,i)=>i+1).join("\n");$("#gut").scrollTop=ta.scrollTop};
+const load=()=>{ta.value=ls(key+lang())??(web?WT[q.c]:LANG[lang()]);gut()};load();
+ta.oninput=()=>{ls(key+lang(),ta.value);gut()};ta.onscroll=gut;
+ta.onkeydown=e=>{if(e.key=="Tab"){e.preventDefault();ta.setRangeText("    ",ta.selectionStart,ta.selectionEnd,"end");ta.oninput()}};
+const ws=$(".ws"),rt=$(".right"),mv=m=>{ws.dataset.m=m;ws.querySelectorAll(".mt").forEach(x=>x.classList.toggle("on",x.dataset.m==m))};
+ws.querySelectorAll(".mt").forEach(x=>x.onclick=()=>mv(x.dataset.m));
+"⇥ { } ( ) [ ] ; \" = < > /".split(" ").forEach(k=>{const b=document.createElement("button");b.textContent=k;b.onpointerdown=e=>e.preventDefault();b.onclick=()=>{ta.setRangeText(k=="⇥"?"    ":k,ta.selectionStart,ta.selectionEnd,"end");ta.oninput();ta.focus()};$(".qk").appendChild(b)});
+const SPL=ls("px_split")||{};if(SPL.lw)ws.style.setProperty("--lw",SPL.lw+"px");if(SPL.ch)rt.style.setProperty("--ch",SPL.ch+"px");
+const dr=(el,fn,rst)=>{el.onpointerdown=e=>{e.preventDefault();el.setPointerCapture(e.pointerId);el.classList.add("drag");document.body.style.userSelect="none"};el.onpointermove=e=>{if(el.classList.contains("drag"))fn(e)};el.onpointerup=()=>{el.classList.remove("drag");document.body.style.userSelect=""};el.ondblclick=rst};
+dr($("#rv"),e=>{const r=ws.getBoundingClientRect(),w=Math.max(260,Math.min(r.width-340,e.clientX-r.left-12));ws.style.setProperty("--lw",w+"px");SPL.lw=w;ls("px_split",SPL)},()=>{ws.style.removeProperty("--lw");delete SPL.lw;ls("px_split",SPL)});
+dr($("#rh"),e=>{const r=rt.getBoundingClientRect(),h=Math.max(90,Math.min(r.height-140,r.bottom-e.clientY-4));rt.style.setProperty("--ch",h+"px");SPL.ch=h;ls("px_split",SPL)},()=>{rt.style.removeProperty("--ch");delete SPL.ch;ls("px_split",SPL)});
+$("#rs").onclick=()=>{if(confirm("Reset to starter code?")){localStorage.removeItem(key+lang());load()}};
+if(!web)$("#l").onchange=e=>{ls("px_lang",e.target.value);load()};
+const fvu=()=>{const on=FAV().includes(id),b=$("#fv");b.textContent=on?"★":"☆";b.style.color=on?"var(--ac)":""};fvu();$("#fv").onclick=()=>{toggleFav(id);fvu()};$("#pv").onclick=()=>open_(id>1?id-1:Q.length);$("#nx").onclick=()=>open_(id<Q.length?id+1:1);
+const cons=$("#cons");let inp=T?T[0][0]:"";
+const tab=n=>{cur=n;$("#t1").classList.toggle("on",n==1);$("#t2").classList.toggle("on",n==2)};
+const showIn=()=>{tab(1);cons.innerHTML=web?`<iframe id="fr" sandbox="allow-scripts" style="width:100%;height:100%;min-height:140px;border:0;border-radius:6px;background:#fff"></iframe>`:`${T?T.map((t,i)=>`<span class="case" data-i="${i}">Case ${i+1}</span>`).join(""):""}<div class="mu">Input (stdin)</div><textarea id="inp" style="width:100%;height:70px;font:13px ui-monospace,monospace">${esc(inp)}</textarea>`;
+const ia=$("#inp");if(ia)ia.oninput=()=>inp=ia.value;cons.querySelectorAll(".case").forEach(c=>c.onclick=()=>{inp=T[+c.dataset.i][0];showIn()})};
+$("#t1").onclick=()=>{showIn();if(web)prev()};$("#t2").onclick=()=>tab(2);
+const prev=()=>{const f=$("#fr");if(f)f.srcdoc=(q.c=="React"?RS:"")+ta.value};
+showIn();if(web)prev();
+const mark=()=>{solved[id]=1;ls(K("px_solved"),solved);setNav("problems")};
+$("#run").onclick=async()=>{mv("res");if(web){showIn();prev();return}tab(2);cons.innerHTML='<div class="mu">Running…</div>';const r=await exec(lang(),ta.value,inp);
+cons.innerHTML=`<div class="res ${r.ok?"ok":"d2"}">${r.ok?"Finished":"Error"}</div><div class="mu">Output</div><pre>${esc(r.out)||"(no output)"}</pre>${r.err?`<div class="mu">Errors</div><pre style="color:var(--h)">${esc(r.err)}</pre>`:""}`};
+$("#sub").onclick=async()=>{mv("res");if(web){showIn();prev();mark();logSub(q,q.c,true);tab(1);return alert("Marked as solved.")}
+tab(2);cons.innerHTML='<div class="mu">Judging…</div>';const cases=T||[[inp,null]];let pass=0,html="",bad=null;
+for(let i=0;i<cases.length;i++){const[ci,ex]=cases[i],r=await exec(lang(),ta.value,ci);const got=r.out.trim().replace(/\r/g,"");
+const ok=r.ok&&(ex===null||got===ex.trim());if(ok)pass++;else if(!bad)bad={i,ci,ex,got,r}}
+if(!bad){mark();html=`<div class="res ok">Accepted</div><div class="mu">${T?pass+" / "+cases.length+" test cases passed":"Ran without errors (no test cases defined for this problem)"}</div>`}
+else{const b=bad;html=`<div class="res d2">${b.r.ok?"Wrong Answer":"Runtime / Compile Error"}</div><div class="mu">${pass} / ${cases.length} test cases passed · failed on case ${b.i+1}</div><div class="mu">Input</div><pre>${esc(b.ci)||"(none)"}</pre>${b.ex!==null&&b.r.ok?`<div class="mu">Expected</div><pre>${esc(b.ex)}</pre>`:""}<div class="mu">Your output</div><pre>${esc(b.got)||"(none)"}</pre>${b.r.err?`<pre style="color:var(--h)">${esc(b.r.err)}</pre>`:""}`}
+logSub(q,lang(),!bad);setNav("problems");cons.innerHTML=html}}
+/* ---------- ACCOUNTS ---------- */
+const USERS=()=>ls("px_users")||{};
+const b2h=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+async function hashPw(pw,salt){const e=new TextEncoder(),k=await crypto.subtle.importKey("raw",e.encode(pw),"PBKDF2",false,["deriveBits"]);return b2h(await crypto.subtle.deriveBits({name:"PBKDF2",salt:e.encode(salt),iterations:150000,hash:"SHA-256"},k,256))}
+function setUser(u){CUR=u;if(u=="guest")localStorage.removeItem("px_session");else ls("px_session",u);solved=ls(K("px_solved"))||{};renderAv()}
+function logout(){setUser("guest");auth("in")}
+function auth(mode){setNav("");const up=mode=="up";
+app.innerHTML=`<div style="display:grid;place-items:center;min-height:100%;padding:20px"><div class="panel" style="width:min(400px,100%);padding:26px"><div style="text-align:center"><span class="lg" style="width:40px;height:40px;font-size:16px;display:inline-grid">&lt;/&gt;</span><h2 style="margin:10px 0 18px">${up?"Create your account":"Sign in to ProblemX"}</h2></div>
+<input class="fi" id="a1" placeholder="${up?"Username":"Username or email"}" autocomplete="username">${up?'<input class="fi" id="a2" type="email" placeholder="Email" autocomplete="email">':""}
+<input class="fi" id="a3" type="password" placeholder="Password${up?" (8+ characters)":""}" autocomplete="${up?"new-password":"current-password"}">${up?'<input class="fi" id="a4" type="password" placeholder="Confirm password" autocomplete="new-password">':""}
+<div class="er" id="ae"></div><button id="ab" style="width:100%;background:var(--ac);color:#1a1a1a;font-weight:700;padding:10px">${up?"Sign Up":"Sign In"}</button>
+<p style="text-align:center;margin:16px 0 4px" class="mu">${up?"Already have an account?":"Don't have an account?"} <a href="#" id="sw" style="color:var(--ac)">${up?"Sign in":"Sign up"}</a></p>
+<p class="mu" style="text-align:center;font-size:12px;margin:8px 0 0">Accounts are saved on this device only.</p></div></div>`;
+$("#sw").onclick=e=>{e.preventDefault();auth(up?"in":"up")};
+const go_=async()=>{const er=m=>{$("#ae").textContent=m},v=i=>($(i)?$(i).value.trim():""),pw=$("#a3").value;er("");
+if(!window.crypto||!crypto.subtle)return er("This browser can't create secure accounts here. Open the file in Chrome, Edge or Firefox.");
+const U=USERS();$("#ab").disabled=true;
+try{if(up){const u=v("#a1"),em=v("#a2").toLowerCase(),k=u.toLowerCase();
+if(!/^\w{3,20}$/.test(u))return er("Username must be 3–20 letters, numbers or underscores.");
+if(!/^\S+@\S+\.\S+$/.test(em))return er("Enter a valid email address.");
+if(pw.length<8)return er("Password must be at least 8 characters.");
+if(pw!==$("#a4").value)return er("Passwords don't match.");
+if(U[k]||Object.values(U).some(x=>x.email==em))return er("That username or email is already registered.");
+const salt=b2h(crypto.getRandomValues(new Uint8Array(16)));U[k]={user:u,email:em,salt,hash:await hashPw(pw,salt),created:Date.now()};ls("px_users",U);
+setUser(k);ls(K("px_prof"),{name:u,user:u,joined:Date.now()});profile()}
+else{const id=v("#a1").toLowerCase(),k=U[id]?id:Object.keys(U).find(x=>U[x].email==id),r=k&&U[k];
+if(!r||await hashPw(pw,r.salt)!==r.hash)return er("Incorrect username/email or password.");setUser(k);profile()}}
+finally{const b=$("#ab");if(b)b.disabled=false}};
+$("#ab").onclick=go_;app.querySelectorAll("input").forEach(i=>i.onkeydown=e=>{if(e.key=="Enter")go_()});$("#a1").focus()}
+/* ---------- PROFILE ---------- */
+const P=()=>({name:(USERS()[CUR]||{}).user||"Guest",user:(USERS()[CUR]||{}).user||"guest",bio:"",loc:"",edu:"",gh:"",li:"",web:"",color:"#ffa116",joined:Date.now(),...(ls(K("px_prof"))||{})});
+const SUBS=()=>ls(K("px_subs"))||[];
+function logSub(q,l,ok){if(CUR=="guest")return;const a=SUBS();a.push({id:q.id,t:q.t,l,ok,ts:Date.now()});ls(K("px_subs"),a.slice(-1000))}
+const dk=d=>new Date(d).toLocaleDateString("en-CA");
+function streak(){const days=new Set(SUBS().map(s=>dk(s.ts)));let cur=0,d=new Date();if(!days.has(dk(d)))d.setDate(d.getDate()-1);while(days.has(dk(d))){cur++;d.setDate(d.getDate()-1)}
+let max=0,run=0,prev=null;[...days].sort().forEach(k=>{const t=new Date(k+"T00:00:00");run=prev&&Math.round((t-prev)/864e5)==1?run+1:1;prev=t;max=Math.max(max,run)});return{cur,max,act:days.size}}
+function renderAv(){document.body.classList.toggle("guest",CUR=="guest");const au=$("#au");if(CUR=="guest"){au.innerHTML='<button class="hb" onclick="auth(\'in\')">Sign in</button><button class="hb su" style="color:var(--ac)" onclick="auth(\'up\')">Sign up</button>';setNav(document.querySelector("nav a.on")?.dataset.n||"");return}
+const p=P();au.innerHTML=`<div class="av" id="av" onclick="menu(event)" title="${esc(p.user)}" style="background:${p.color}">${esc((p.name.trim()[0]||"?").toUpperCase())}</div>`;setNav(document.querySelector("nav a.on")?.dataset.n||"")}
+function menu(e){e.stopPropagation();const m=$("#mn");if(m.style.display=="block"){m.style.display="none";return}const p=P(),lt=document.documentElement.dataset.t=="light";
+const tg=(t,l)=>`<b class="${(t=="light")==lt?"on":""}" onclick="event.stopPropagation();setTheme('${t}');this.parentNode.querySelectorAll('b').forEach(x=>x.classList.toggle('on',x==this))">${l}</b>`;
+m.innerHTML=`<div class="mi" onclick="profile()"><div class="av" style="background:${p.color};margin:0">${esc((p.name.trim()[0]||"?").toUpperCase())}</div><div><b>${esc(p.name)}</b><div class="mu">@${esc(p.user)}</div></div></div>
+<div class="pm" onclick="info('Premium','ProblemX is free to use. Every problem, runner and feature is already unlocked.')">Access all features with our Premium subscription!</div>
+<div class="qg"><div class="qt" onclick="lists()"><i>📋</i>My Lists</div><div class="qt" onclick="lists('fav')"><i>⭐</i>Favorites</div><div class="qt" onclick="notebook()"><i>📓</i>Notebook</div><div class="qt" onclick="profile()"><i>📈</i>Progress</div><div class="qt" onclick="points()"><i>🪙</i>Points</div></div>
+<div class="ms"></div>
+<div class="mi" onclick="info('Try New Features','You are on the latest ProblemX build. New features will show up here.')">✨ Try New Features</div>
+<div class="mi" onclick="info('Orders','No orders yet.')">🧾 Orders</div>
+<div class="mi" onclick="playground()">🧪 My Playgrounds</div>
+<div class="mi" onclick="settings()">⚙️ Settings</div>
+<div class="mi" onclick="event.stopPropagation()">🎨 Appearance<span class="seg">${tg("light","Light")}${tg("dark","Dark")}</span></div>
+<div class="ms"></div><div class="mi" onclick="logout()">↪ Sign Out</div>`;m.style.display="block"}
+document.addEventListener("click",()=>{$("#mn").style.display="none";document.querySelector("nav").classList.remove("open")});
+function resetAll(){if(confirm("Delete all solved problems and submissions on this account?")){localStorage.removeItem(K("px_solved"));localStorage.removeItem(K("px_subs"));solved={};profile()}}
+const ago=t=>{const m=Math.floor((Date.now()-t)/6e4);return m<1?"just now":m<60?m+" minutes ago":m<1440?Math.floor(m/60)+" hours ago":m<43200?Math.floor(m/1440)+" days ago":Math.floor(m/43200)+" months ago"};
+const url=v=>/^https?:\/\//i.test(v)?v:"https://"+v;
+function editProf(){if(CUR=="guest")return auth("in");const p=P(),o=document.createElement("div");o.className="mo";
+const f=(k,l,ph)=>`<label>${l}</label><input data-k="${k}" value="${esc(p[k]).replace(/"/g,"&quot;")}" placeholder="${ph||""}">`;
+o.innerHTML=`<div class="md"><h3 style="margin:0">Edit profile</h3>${f("name","Display name")}<label>Bio</label><textarea data-k="bio" rows="3" maxlength="200">${esc(p.bio)}</textarea>${f("loc","Location")}${f("edu","School / Company")}${f("gh","GitHub","github.com/username")}${f("li","LinkedIn","linkedin.com/in/username")}${f("web","Website")}<label>Avatar colour</label><input data-k="color" type="color" value="${p.color}" style="height:36px;padding:2px">
+<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px"><button id="pc">Cancel</button><button class="sub" id="ps">Save</button></div></div>`;
+document.body.appendChild(o);o.onclick=e=>{if(e.target==o)o.remove()};o.querySelector("#pc").onclick=()=>o.remove();
+o.querySelector("#ps").onclick=()=>{const n={...p};o.querySelectorAll("[data-k]").forEach(i=>n[i.dataset.k]=i.value.trim());n.name=n.name||p.user;ls(K("px_prof"),n);o.remove();renderAv();profile()}}
+let PT="ac";const ptab=t=>{PT=t;profile(1)};
+function profile(keep){if(CUR=="guest")return auth("in");setNav("");const p=P(),S=stat(),st=streak(),subs=SUBS();
+const okS=subs.filter(x=>x.ok),acc=subs.length?Math.round(okS.length/subs.length*100):0,att=new Set(subs.filter(x=>!solved[x.id]).map(x=>x.id)).size;
+const rank=Math.max(1,4700000-(S.n[0]+S.n[1]*3+S.n[2]*5)*9000);
+const lg={};const seen=new Set();okS.forEach(x=>{const k=x.l+"|"+x.id;if(!seen.has(k)){seen.add(k);lg[x.l]=(lg[x.l]||0)+1}});
+const sk=[[2,"Advanced"],[1,"Intermediate"],[0,"Fundamental"]].map(([d,n])=>{const c={};Q.forEach(x=>{if(x.d==d&&solved[x.id])c[x.c]=(c[x.c]||0)+1});return[n,Object.entries(c).sort((a,b)=>b[1]-a[1])]}).filter(x=>x[1].length);
+const tg=e=>`<span class="tg">${esc(e[0])} ×${e[1]}</span>`;
+const cnt={};subs.forEach(x=>{const k=dk(x.ts);cnt[k]=(cnt[k]||0)+1});
+const td=new Date();td.setHours(0,0,0,0);const a0=new Date(td);a0.setDate(td.getDate()-td.getDay()-52*7);
+let cells="",ml="",pm=-1;for(let d=new Date(a0),i=0;d<=td;d.setDate(d.getDate()+1),i++){if(i%7==0){const m=d.getMonth();ml+=`<span>${m!=pm?d.toLocaleString("en",{month:"short"}):""}</span>`;pm=m}const k=dk(d),c=cnt[k]||0;cells+=`<i class="hc l${Math.min(c,4)}" title="${c} submission${c==1?"":"s"} on ${k}"></i>`}
+const yr=subs.filter(x=>Date.now()-x.ts<365*864e5).length;
+const B=[["First solve",S.s>=1],["5 solved",S.s>=5],["25 solved",S.s>=25],["100 solved",S.s>=100],["7-day streak",st.max>=7],["Hard hitter",S.n[2]>=5],["Polyglot",Object.keys(lg).length>=3]],bn=B.filter(x=>x[1]).length;
+const links=[p.web,p.gh,p.li].filter(Boolean).map(x=>`<div class="pl"><a href="${esc(url(x))}" target="_blank" rel="noopener noreferrer">${esc(x)}</a></div>`).join("");
+const list=(PT=="ac"?okS:subs).slice(-(PT=="ac"?15:100)).reverse();
+const zero=n=>`<div style="flex:1"><div class="mu">${n}</div><b style="font-size:18px">0</b><div class="mu" style="font-size:12px">Last week 0</div></div>`;
+app.innerHTML=`<div class="prof"><div><div class="panel"><div style="display:flex;gap:14px;align-items:center"><div class="big" style="background:${p.color}">${esc((p.name.trim()[0]||"?").toUpperCase())}</div><div><b style="font-size:18px">${esc(p.name)}</b><div class="mu">@${esc(p.user)}</div><div class="mu" title="Local estimate based on problems solved">Rank <b style="color:var(--tx)">${rank.toLocaleString("en-US")}</b></div></div></div>
+${p.bio?`<p>${esc(p.bio)}</p>`:""}<div style="display:flex;gap:20px;margin:10px 0"><span><b>0</b> <span class="mu">Following</span></span><span><b>0</b> <span class="mu">Followers</span></span></div>
+<button class="sub" style="width:100%;margin-bottom:8px" onclick="editProf()">Edit Profile</button>${p.loc?`<div class="pl">📍 ${esc(p.loc)}</div>`:""}${p.edu?`<div class="pl">🎓 ${esc(p.edu)}</div>`:""}${links}</div>
+<div class="panel"><b>Community Stats</b><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">${zero("Views")}${zero("Solution")}${zero("Discuss")}${zero("Reputation")}</div></div>
+<div class="panel"><b>Languages</b><div style="margin-top:10px">${Object.entries(lg).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span class="tg">${esc(l)}</span><span class="mu"><b style="color:var(--tx)">${n}</b> problems solved</span></div>`).join("")||'<div class="mu">Solve a problem to see languages.</div>'}</div></div>
+<div class="panel"><b>Skills</b>${sk.map(([n,e])=>`<div style="margin-top:12px"><div class="mu" style="margin-bottom:6px">${n}</div>${e.slice(0,3).map(tg).join("")}${e.length>3?`<details><summary>Show more</summary>${e.slice(3).map(tg).join("")}</details>`:""}</div>`).join("")||'<div class="mu" style="margin-top:8px">Your skills appear here as you solve problems.</div>'}</div></div>
+<div><div style="display:grid;grid-template-columns:3fr 2fr;gap:16px" class="two"><div class="panel" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div style="text-align:center"><div class="ring" style="--p:${S.s/Q.length*100};margin:0 auto"><div><b style="font-size:22px">${S.s}<span class="mu" style="font-size:12px">/${Q.length}</span></b><span style="color:var(--e)">✔ Solved</span></div></div><div class="mu" style="margin-top:6px">${att} Attempting</div></div>
+<div style="flex:1;min-width:150px;display:flex;flex-direction:column;gap:8px">${DN.map((n,i)=>`<div style="display:flex"><div class="sb"><span class="d${i}">${n.replace("Medium","Med.")}</span> <b>${S.n[i]}</b><span class="mu">/${S.t[i]}</span></div></div>`).join("")}<div class="mu">Acceptance <b style="color:var(--tx)">${acc}%</b> · ${subs.length} submission${subs.length==1?"":"s"}</div></div></div>
+<div class="panel"><div style="display:flex;justify-content:space-between"><b>Badges</b><b>${bn}</b></div><div style="margin-top:10px">${B.map(b=>`<span class="bd ${b[1]?"":"off"}" title="${b[1]?"Earned":"Locked"}">🏅 ${b[0]}</span>`).join("")}</div></div></div>
+<div class="panel"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:10px"><span><b>${yr}</b> submissions in the past one year</span><span class="mu">Total active days: <b style="color:var(--tx)">${st.act}</b> · Max streak: <b style="color:var(--tx)">${st.max}</b></span></div><div style="overflow:auto"><div class="ml">${ml}</div><div class="hm">${cells}</div></div></div>
+<div class="panel"><div class="tabs" style="border:0;padding:0 0 8px">${[["ac","Recent AC"],["all","List"],["sol","Solutions"],["dis","Discuss"]].map(t=>`<span class="tab ${PT==t[0]?"on":""}" onclick="ptab('${t[0]}')">${t[1]}</span>`).join("")}<span class="sp"></span><a class="mu" style="cursor:pointer" onclick="ptab('all')">View all submissions</a></div>
+${PT=="sol"||PT=="dis"?`<div class="mu" style="padding:14px 0">Nothing here yet.</div>`:list.map(x=>`<div class="sr" onclick="open_(${x.id})"><span style="flex:1">${esc(x.t)}</span>${PT=="all"?`<span class="${x.ok?"ok":"d2"}">${x.ok?"Accepted":"Failed"}</span><span class="pill">${esc(x.l)}</span>`:""}<span class="mu">${ago(x.ts)}</span></div>`).join("")||'<div class="mu" style="padding:14px 0">No submissions yet. Open a problem and press Submit.</div>'}</div>
+<div class="mu" style="text-align:center;font-size:12px">Copyright © 2026 ProblemX · India</div></div></div>`;if(!keep)scrollTo(0,0)}
+/* ---------- MENU PAGES ---------- */
+function setTheme(t){document.documentElement.dataset.t=t;ls("px_theme",t)}
+function modal(h){const o=document.createElement("div");o.className="mo";o.innerHTML=`<div class="md">${h}</div>`;document.body.appendChild(o);o.onclick=e=>{if(e.target==o)o.remove()};o.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>o.remove());return o}
+function info(t,b){modal(`<h3 style="margin:0 0 8px">${esc(t)}</h3><p class="mu">${esc(b)}</p><div style="text-align:right"><button class="sub" data-x>OK</button></div>`)}
+function settings(){const o=modal(`<h3 style="margin:0 0 10px">Settings</h3><div class="mi" data-a="p">👤 Edit profile</div><div class="mi" data-a="c">⚙️ Compiler (Java / C++)</div><div class="mi" data-a="r" style="color:var(--h)">🗑 Reset progress</div><div style="text-align:right;margin-top:10px"><button data-x>Close</button></div>`);
+o.querySelector("[data-a=p]").onclick=()=>{o.remove();editProf()};o.querySelector("[data-a=c]").onclick=()=>{o.remove();cfg()};o.querySelector("[data-a=r]").onclick=()=>{o.remove();resetAll()}}
+function points(){const S=stat(),pts=S.n[0]*10+S.n[1]*20+S.n[2]*30,st=streak();info("Points",`You have ${pts} points: 10 for each Easy, 20 for each Medium and 30 for each Hard problem solved. Current streak: ${st.cur} day${st.cur==1?"":"s"}.`)}
+function FAV(){return ls(K("px_fav"))||[]}
+function toggleFav(id){const f=FAV(),i=f.indexOf(id);i<0?f.push(id):f.splice(i,1);ls(K("px_fav"),f)}
+let LT="fav";
+function lists(w){if(CUR=="guest")return auth("in");setNav("");if(w)LT=w;const att=[...new Set(SUBS().filter(x=>!solved[x.id]).map(x=>x.id))];
+const L={fav:["Favorites",FAV()],sol:["Solved",Q.filter(x=>solved[x.id]).map(x=>x.id)],att:["Attempted",att]},rows=L[LT][1].map(id=>Q[id-1]).filter(Boolean);
+app.innerHTML=`<div style="max-width:1100px;margin:0 auto;padding:12px"><div class="panel"><div class="tabs" style="border:0;padding:0 0 10px;flex-wrap:wrap">${Object.entries(L).map(([k,v])=>`<span class="tab ${LT==k?"on":""}" onclick="lists('${k}')">${v[0]} (${v[1].length})</span>`).join("")}</div>${rows.map(x=>`<div class="row" onclick="open_(${x.id})"><span class="ok">${solved[x.id]?"✔":""}</span><span>${x.id}. ${esc(x.t)}</span><span class="mu">${x.c}</span><span class="d${x.d}">${DN[x.d]}</span></div>`).join("")||`<div class="mu" style="padding:20px">${LT=="fav"?"No favorites yet. Open a problem and tap ☆ to add it.":"Nothing here yet."}</div>`}</div></div>`}
+function NB(){return ls(K("px_notes"))||[]}
+function delNote(i){const a=NB();a.splice(i,1);ls(K("px_notes"),a);notebook()}
+function notebook(){if(CUR=="guest")return auth("in");setNav("");const n=NB();
+app.innerHTML=`<div style="max-width:800px;margin:0 auto;padding:12px"><div class="panel"><h3 style="margin:0 0 10px">Notebook</h3><input id="nt" placeholder="Title" style="width:100%;margin-bottom:8px"><textarea id="nb" rows="4" placeholder="Write a note…" style="width:100%"></textarea><div style="text-align:right;margin:8px 0"><button class="sub" id="ns">Save note</button></div>${n.map((x,i)=>`<div class="panel" style="background:var(--p2);margin-top:8px"><div style="display:flex;gap:8px"><b style="flex:1">${esc(x.t||"Untitled")}</b><span class="mu">${ago(x.ts)}</span><span style="cursor:pointer" title="Delete" onclick="delNote(${i})">🗑</span></div><div style="white-space:pre-wrap;margin-top:4px">${esc(x.b)}</div></div>`).join("")||'<div class="mu">No notes yet.</div>'}</div></div>`;
+$("#ns").onclick=()=>{const t=$("#nt").value.trim(),b=$("#nb").value.trim();if(!t&&!b)return;const a=NB();a.unshift({t,b,ts:Date.now()});ls(K("px_notes"),a);notebook()}}
+function playground(){if(CUR=="guest")return auth("in");setNav("");const lg=ls("px_lang")||"Java";
+app.innerHTML=`<div style="max-width:900px;margin:0 auto;padding:12px"><div class="panel"><div class="tabs" style="border:0;padding:0 0 10px"><b>My Playground</b><span class="sp"></span><select id="pl">${Object.keys(LANG).map(l=>`<option ${l==lg?"selected":""}>${l}</option>`).join("")}</select><button class="sub" id="pr">▶ Run</button></div><textarea id="pc" rows="14" spellcheck="false" style="width:100%;font:13px/1.5 ui-monospace,monospace;white-space:pre;tab-size:4"></textarea><div class="mu" style="margin-top:8px">Input (stdin)</div><textarea id="pi" rows="3" style="width:100%;font:13px ui-monospace,monospace"></textarea><div id="po" style="margin-top:8px"></div></div></div>`;
+const load=()=>{$("#pc").value=ls(K("px_pg_"+$("#pl").value))??LANG[$("#pl").value]};load();$("#pl").onchange=load;$("#pc").oninput=e=>ls(K("px_pg_"+$("#pl").value),e.target.value);
+$("#pr").onclick=async()=>{$("#po").innerHTML='<div class="mu">Running…</div>';const r=await exec($("#pl").value,$("#pc").value,$("#pi").value);$("#po").innerHTML=`<div class="res ${r.ok?"ok":"d2"}">${r.ok?"Finished":"Error"}</div><pre>${esc(r.out)||"(no output)"}</pre>${r.err?`<pre style="color:var(--h)">${esc(r.err)}</pre>`:""}`}}
+renderAv();profile();
+</script></body></html>
